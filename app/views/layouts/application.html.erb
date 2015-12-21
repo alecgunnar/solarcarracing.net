@@ -13,8 +13,16 @@
           <%= link_to 'Solar Car Racing', :root %>
         </div>
         <nav class="globalHeader__userBar">
-          Hello <% if user_signed_in? %><%= current_user.username %><% else %>there<% end %>
+          <% if user_signed_in? %>
+            <div class="userBar__currentMember" id="currentMember-menu-trigger">
+              Hello <%= current_user.username %> <%= image_tag current_user.gravatar_url, class: 'currentMember__avatar' %><div class="currentMember__trigger"><div>
+            </div>
+            <div class="currentMember__menu" id="currentMember-menu-menu">
+          <% end %>
           <%= render 'users/menu/user_bar_items' %>
+          <% if user_signed_in? %>
+            </div>
+          <% end %>
         </nav>
         <div class="clearBoth"></div>
       </div>

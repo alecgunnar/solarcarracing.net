@@ -18,9 +18,10 @@
     input[type="password"] {
         font-size: 1rem;
         width: 100%;
-        padding: $padding / 2;
+        padding: $padding;
         margin-top: $margin / 2;
         box-sizing: border-box;
+        border: 1px solid $light-gray;
         outline: none;
     }
 

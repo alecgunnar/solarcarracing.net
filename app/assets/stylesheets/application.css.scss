@@ -26,7 +26,8 @@ a {
 }
 
 .wrapper {
-    width: $wrapper-width;
+    max-width: $wrapper-width;
+    min-width: $wrapper-min-width;
     margin: 0 auto;
 }
 
@@ -53,6 +54,7 @@ a {
 
 .globalHeader__userBar {
     float: right;
+    position: relative;
 
     a, & {
         color: $white;
@@ -60,8 +62,70 @@ a {
 
     ul {
         @extend .horizontalMenu;
+    }
+}
 
-        margin: 0 0 0 $margin;
+.userBar__currentMember {
+    background-color: $primary-darker;
+    line-height: $global-header-height / 2;
+    padding: 0 $padding;
+    margin-top: $global-header-height / 4;
+    border-radius: $border-radius;
+    cursor: pointer;
+}
+
+.currentMember__trigger {
+    display: inline-block;
+    margin-right: $margin;
+
+    &:before {
+        border-left: 2px solid $white;
+        border-bottom: 2px solid $white;
+        margin-top: -11px;
+        width: 7px;
+        height: 7px;
+        display: block;
+        content: " ";
+        transform: rotate(-45deg);
+    }
+}
+
+.currentMember__avatar {
+    width: $global-header-height / 3;
+    height: $global-header-height / 3;
+    vertical-align: middle;
+    margin: 0 $margin * 2 0 $margin;
+}
+
+.currentMember__menu {
+    background-color: $primary-darker;
+    line-height: 1;
+    position: absolute;
+    top: $global-header-height - ($global-header-height / 8);
+    right: 0;
+    width: $userbar-menu-width;
+    border-radius: $border-radius;
+    display: none;
+
+    ul {
+        @extend .verticalMenu;
+
+        a {
+            padding: $padding;
+            display: block;
+        }
+    }
+
+    &:before {
+        background-color: $primary-darker;
+        position: absolute;
+        top: -7px;
+        right: $margin * 2;
+        width: 12px;
+        height: 12px;
+        display: block;
+        transform: rotate(45deg);
+        content: " ";
     }
 }
 
