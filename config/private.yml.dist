@@ -3,3 +3,7 @@ db:
   user: root
   pass: 123
   host: localhost
+
+devise:
+  secret_key: 92c3e48b585b7cfd6e794351b544cf3adf9df442486d3d8b43767d1a9aab9fed0ceea86f2d7ffed1487fafe0a923af87ed36ae19a75c3621969a4185005f9777
+  mailer_sender: admin@domain.com
