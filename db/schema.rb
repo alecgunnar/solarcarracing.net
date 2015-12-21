@@ -11,7 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151223040917) do
+ActiveRecord::Schema.define(version: 20151221191802) do
+
+  create_table "forums", force: :cascade do |t|
+    t.string   "name",         limit: 255,             null: false
+    t.string   "description",  limit: 255
+    t.integer  "topics",       limit: 4,   default: 0
+    t.integer  "posts",        limit: 4,   default: 0
+    t.integer  "last_post_id", limit: 4,   default: 0
+    t.integer  "parent_id",    limit: 4,   default: 0
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+  end
+
+  add_index "forums", ["parent_id"], name: "index_forums_on_parent_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
