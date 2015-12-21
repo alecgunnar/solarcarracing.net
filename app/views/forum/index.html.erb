@@ -1,0 +1,9 @@
+<% for category in @categories %>
+  <h2><%= category.name %></h2>
+  <% for forum in category.forums %>
+    <div>
+      <%= forum.name %>
+      <div><%= forum.description %></div>
+    </div>
+  <% end %>
+<% end %>
