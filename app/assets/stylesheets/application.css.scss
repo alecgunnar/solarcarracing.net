@@ -132,6 +132,7 @@ a {
 .globalNavigation {
     background-color: $primary-darker;
     line-height: $global-nav-height;
+    text-transform: uppercase;
 
     a {
         color: $white;
