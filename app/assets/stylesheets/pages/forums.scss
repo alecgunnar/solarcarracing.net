@@ -1,0 +1,25 @@
+.forums__rootTitle {
+
+}
+
+.forums__forum {
+    padding: $padding;
+
+    &:nth-of-type(odd) {
+        background-color: $lighter-gray;
+    }
+}
+
+.forums__forum__name {
+    font-weight: 400;
+    display: inline-block;
+    margin-bottom: $margin;
+}
+
+.forums__forum__description {
+    font-size: .8rem;
+}
+
+.forums__forum__description__stats {
+    float: right;
+}

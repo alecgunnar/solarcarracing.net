@@ -1,9 +1,12 @@
 <% for category in @categories %>
-  <h2><%= category.name %></h2>
+  <h3 class="forums__rootTitle"><%= category.name %></h3>
   <% for forum in category.forums %>
-    <div>
-      <%= forum.name %>
-      <div><%= forum.description %></div>
+    <div class="forums__forum">
+      <a href="" class="forums__forum__name"><%= forum.name %></a>
+      <div class="forums__forum__description">
+        <div class="forums__forum__description__stats"><%= forum.posts %> posts, <%= forum.topics %> topics<% if forum.last_post_id > 0 %>, last post<% else %><% end %></div>
+        <%= forum.description %>
+      </div>
     </div>
   <% end %>
 <% end %>
