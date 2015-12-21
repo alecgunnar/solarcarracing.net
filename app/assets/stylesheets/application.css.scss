@@ -1,0 +1,101 @@
+@import 'variables';
+@import 'partials';
+@import 'mixins';
+
+body {
+    background-color: $white;
+    font-family: "Helvetica Neue", "Sans Serif";
+    font-weight: 200;
+    letter-spacing: 1px;
+    color: $black;
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    color: $black;
+
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+.wrapper {
+    width: $wrapper-width;
+    margin: 0 auto;
+}
+
+.clearBoth {
+    clear: both;
+}
+
+.globalHeader {
+    background: $primary;
+    line-height: $global-header-height;
+}
+
+.globalHeader__branding a {
+    background-image: image-url('logos/version_one_smaller.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: left center;
+    text-indent: -100%;
+    display: inline-block;
+    width: $branding-width;
+    height: $global-header-height;
+    float: left;
+}
+
+.globalHeader__userBar {
+    float: right;
+
+    a, & {
+        color: $white;
+    }
+
+    ul {
+        @extend .horizontalMenu;
+
+        margin: 0 0 0 $margin;
+    }
+}
+
+.globalNavigation {
+    background-color: $primary-darker;
+    line-height: $global-nav-height;
+
+    a {
+        color: $white;
+        text-decoration: none;
+        line-height: $global-nav-height;
+        padding: 0 $padding;
+        display: inline-block;
+
+        &:hover,
+        &.active {
+            background: $primary;
+        }
+    }
+
+    ul {
+        @extend .horizontalMenu;
+
+        li {
+            margin: 0;
+        }
+    }
+}
+
+main {
+    margin: $margin 0;
+}
+
+.globalFooter {
+    text-align: center;
+
+    a, & {
+        color: $gray;
+    }
+}
+
+@import 'pages';

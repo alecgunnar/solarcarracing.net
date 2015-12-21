@@ -7,9 +7,36 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <header>
-      <%= render 'users/menu/user_bar_items' %>
+    <header class="globalHeader">
+      <div class="wrapper">
+        <div class="globalHeader__branding">
+          <%= link_to 'Solar Car Racing', :root %>
+        </div>
+        <nav class="globalHeader__userBar">
+          Hello <% if user_signed_in? %><%= current_user.username %><% else %>there<% end %>
+          <%= render 'users/menu/user_bar_items' %>
+        </nav>
+        <div class="clearBoth"></div>
+      </div>
     </header>
-    <%= yield %>
+    <div class="wrapper">
+      <nav class="globalNavigation">
+        <ul>
+          <li><%= link_to 'Home', :root %></li>
+          <li><%= link_to 'Forum', :root %></li>
+          <li><%= link_to '', :root %></li>
+        </ul>
+      </nav>
+    </div>
+    <main>
+      <div class="wrapper">
+        <%= yield %>
+      </div>
+    </main>
+    <footer class="globalFooter">
+      <div class="wrapper">
+        Created by <a href="http://alecgunnar.com" target="_blank">Alec Carpenter</a>.
+      </div>
+    </footer>
   </body>
 </html>
