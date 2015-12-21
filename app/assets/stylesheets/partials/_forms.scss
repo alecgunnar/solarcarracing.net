@@ -1,0 +1,59 @@
+.formWrap {
+    background: $lighter-gray;
+    padding: $padding;
+}
+
+.formWrap__errors {
+    background-color: $error-darker;
+    color: $white;
+    padding: $padding;
+    margin-bottom: $margin;
+}
+
+.formWrap__field {
+    margin-bottom: $margin;
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+        font-size: 1rem;
+        width: 100%;
+        padding: $padding / 2;
+        margin-top: $margin / 2;
+        box-sizing: border-box;
+        outline: none;
+    }
+
+    .field_with_errors {
+        display: inline;
+
+        label {
+            color: $error;
+        }
+    }
+}
+
+.formWrap__actions {
+    text-align: center;
+
+    input {
+        background-color: $primary;
+        color: $white;
+        font-size: 1rem;
+        padding: $padding $padding * 3;
+        border: 0;
+        cursor: pointer;
+
+        &:hover {
+            background-color: $primary-darker;
+        }
+    }
+}
+
+.formOptions {
+    margin-top: $margin;
+
+    ul {
+        @extend .horizontalMenu;
+    }
+}

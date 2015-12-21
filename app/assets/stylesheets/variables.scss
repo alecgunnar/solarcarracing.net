@@ -13,7 +13,10 @@ $white: #FFF;
 $black: #000;
 $gray: #CCC;
 $light-gray: #E1E1E1;
+$lighter-gray: #F1F1F1;
 
 // Theme colors
 $primary: #089DE3;
-$primary-darker: darken(#089DE3, 5%);
+$primary-darker: darken($primary, 5%);
+$error: #D00;
+$error-darker: darken($error, 5%);
