@@ -3,9 +3,6 @@
 //= require turbolinks
 //= require_tree .
 
-function whenReady () {
+$(document).on('ready page:load', function () {
     $.currentMemberMenu();
-}
-
-$(document).ready(whenReady);
-$(document).on('page:load', whenReady);
+});

@@ -1,5 +1,5 @@
 (function ($) {
-    $.currentMemberMenu = function (options) {
+    $.currentMemberMenu = function () {
         var config,
             methods,
             $trigger,
@@ -12,17 +12,13 @@
             }
         };
 
-        $.extend({}, config, options);
+        if (arguments.length)
+            $.extend({}, config, arguments[0]);
 
         methods = {
             createListeners: function () {
-                $trigger.on('click', function (e) {
-                    e.stopPropagation();
+                $trigger.on('click', function () {
                     $menu.toggle();
-                });
-
-                $(document).on('click', function () {
-                    $menu.hide();
                 });
             },
             initialize: function () {
