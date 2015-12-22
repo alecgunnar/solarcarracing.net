@@ -18,6 +18,7 @@
         methods = {
             createListeners: function () {
                 $trigger.on('click', function () {
+                    $trigger.toggleClass($trigger.data('triggered-classname'));
                     $menu.toggle();
                 });
             },

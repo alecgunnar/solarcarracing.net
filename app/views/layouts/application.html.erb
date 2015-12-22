@@ -14,7 +14,7 @@
         </div>
         <nav class="globalHeader__userBar">
           <% if user_signed_in? %>
-            <div class="globalHeader__userBar__currentMember" id="currentMember-menu-trigger">
+            <div class="globalHeader__userBar__currentMember" id="currentMember-menu-trigger" data-triggered-classname="globalHeader__userBar__currentMember--triggered">
               Hello <%= current_user.username %> <%= image_tag current_user.gravatar_url, class: 'globalHeader__userBar__currentMember__avatar' %><div class="globalHeader__userBar__currentMember__trigger"><div>
             </div>
             <div class="globalHeader__userBar__currentMember__menu" id="currentMember-menu-menu">
