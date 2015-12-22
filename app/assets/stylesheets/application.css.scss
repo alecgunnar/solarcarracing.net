@@ -43,7 +43,7 @@ a {
     right: 0;
 }
 
-.globalHeader__branding a {
+.branding a {
     background-image: image-url('logos/version_three.png');
     background-size: $logo-width $logo-height;
     background-repeat: no-repeat;
@@ -56,7 +56,7 @@ a {
 }
 
 
-.globalHeader__userBar {
+.userBar {
     position: relative;
     float: right;
 
@@ -69,25 +69,25 @@ a {
     }
 }
 
-.globalHeader__mainNav,
-.globalHeader__userBar__currentMember {
+.globalNavigation,
+.userBar__currentMember {
     margin-top: $global-header-height / 4;
     line-height: $global-header-height / 2;
 }
 
-.globalHeader__userBar__currentMember {
+.userBar__currentMember {
     background-color: $primary-darker;
     padding: 0 $padding;
     border-radius: $border-radius;
     cursor: pointer;
 }
 
-.globalHeader__userBar__currentMember--triggered .globalHeader__userBar__currentMember__trigger:before {
+.userBar__currentMember--triggered .userBar__currentMember__trigger:before {
     transform: rotate(135deg);
     margin: 0 0 -3px;
 }
 
-.globalHeader__userBar__currentMember__trigger {
+.userBar__currentMember__trigger {
     display: inline-block;
     margin-right: $margin;
 
@@ -103,14 +103,14 @@ a {
     }
 }
 
-.globalHeader__userBar__currentMember__avatar {
+.userBar__currentMember__avatar {
     width: $global-header-height / 3;
     height: $global-header-height / 3;
     vertical-align: middle;
     margin: 0 $margin * 2 0 $margin;
 }
 
-.globalHeader__userBar__currentMember__menu {
+.userBar__currentMember__menu {
     background-color: $primary-darker;
     line-height: 1;
     position: absolute;
@@ -142,7 +142,7 @@ a {
     }
 }
 
-.globalHeader__mainNav {
+.globalNavigation {
     text-transform: uppercase;
     float: left;
 
