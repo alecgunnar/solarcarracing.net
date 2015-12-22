@@ -8,9 +8,8 @@ html {
 }
 
 body {
-    background-color: $white;
+    background-color: $background;
     font-family: "Helvetica Neue", "Sans Serif";
-    font-weight: 200;
     letter-spacing: 1px;
     color: $black;
     padding: 0;
@@ -36,13 +35,17 @@ a {
 }
 
 .globalHeader {
-    background: $primary;
+    background-color: $primary;
     line-height: $global-header-height;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
 }
 
 .globalHeader__branding a {
-    background-image: image-url('logos/version_one_smaller.png');
-    background-size: contain;
+    background-image: image-url('logos/version_three.png');
+    background-size: $logo-width $logo-height;
     background-repeat: no-repeat;
     background-position: left center;
     text-indent: -100%;
@@ -52,9 +55,10 @@ a {
     float: left;
 }
 
+
 .globalHeader__userBar {
-    float: right;
     position: relative;
+    float: right;
 
     a, & {
         color: $white;
@@ -65,16 +69,20 @@ a {
     }
 }
 
-.userBar__currentMember {
-    background-color: $primary-darker;
-    line-height: $global-header-height / 2;
-    padding: 0 $padding;
+.globalHeader__mainNav,
+.globalHeader__userBar__currentMember {
     margin-top: $global-header-height / 4;
+    line-height: $global-header-height / 2;
+}
+
+.globalHeader__userBar__currentMember {
+    background-color: $primary-darker;
+    padding: 0 $padding;
     border-radius: $border-radius;
     cursor: pointer;
 }
 
-.currentMember__trigger {
+.globalHeader__userBar__currentMember__trigger {
     display: inline-block;
     margin-right: $margin;
 
@@ -90,14 +98,14 @@ a {
     }
 }
 
-.currentMember__avatar {
+.globalHeader__userBar__currentMember__avatar {
     width: $global-header-height / 3;
     height: $global-header-height / 3;
     vertical-align: middle;
     margin: 0 $margin * 2 0 $margin;
 }
 
-.currentMember__menu {
+.globalHeader__userBar__currentMember__menu {
     background-color: $primary-darker;
     line-height: 1;
     position: absolute;
@@ -121,29 +129,27 @@ a {
         position: absolute;
         top: -7px;
         right: $margin * 2;
-        width: 12px;
-        height: 12px;
+        width: 14px;
+        height: 14px;
         display: block;
         transform: rotate(45deg);
         content: " ";
     }
 }
 
-.globalNavigation {
-    background-color: $primary-darker;
-    line-height: $global-nav-height;
+.globalHeader__mainNav {
     text-transform: uppercase;
+    float: left;
 
     a {
         color: $white;
         text-decoration: none;
-        line-height: $global-nav-height;
-        padding: 0 $padding;
+        margin-left: $margin * 2;
         display: inline-block;
 
         &:hover,
         &.active {
-            background: $primary;
+            text-decoration: underline;
         }
     }
 
@@ -157,7 +163,9 @@ a {
 }
 
 main {
-    margin: $margin 0;
+    background-color: $white;
+    margin: $global-header-height 0 $margin;
+    padding: $padding;
 }
 
 .globalFooter {

@@ -2,8 +2,9 @@
 $wrapper-width: 1200px;
 $wrapper-min-width: 960px;
 $global-header-height: 75px;
-$global-nav-height: 40px;
-$branding-width: 300px;
+$branding-width: 150px;
+$logo-width: 150px;
+$logo-height: 49px;
 $userbar-menu-width: 250px;
 
 $border-radius: 3px;
@@ -15,12 +16,21 @@ $margin: 10px;
 // Generic colors
 $white: #FFF;
 $black: #000;
+$light-black: #515151;
 $gray: #CCC;
 $light-gray: #E1E1E1;
 $lighter-gray: #F1F1F1;
 
 // Theme colors
+$background: #3C3C3C;
+
 $primary: #089DE3;
 $primary-darker: darken($primary, 5%);
+
+$secondary: #FFD44D;
+$secondary-lighter: lighten($secondary, 5%);
+
+$thirdary: #E26700;
+
 $error: #D00;
 $error-darker: darken($error, 5%);

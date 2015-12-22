@@ -14,28 +14,25 @@
         </div>
         <nav class="globalHeader__userBar">
           <% if user_signed_in? %>
-            <div class="userBar__currentMember" id="currentMember-menu-trigger">
-              Hello <%= current_user.username %> <%= image_tag current_user.gravatar_url, class: 'currentMember__avatar' %><div class="currentMember__trigger"><div>
+            <div class="globalHeader__userBar__currentMember" id="currentMember-menu-trigger">
+              Hello <%= current_user.username %> <%= image_tag current_user.gravatar_url, class: 'globalHeader__userBar__currentMember__avatar' %><div class="globalHeader__userBar__currentMember__trigger"><div>
             </div>
-            <div class="currentMember__menu" id="currentMember-menu-menu">
+            <div class="globalHeader__userBar__currentMember__menu" id="currentMember-menu-menu">
           <% end %>
           <%= render 'users/menu/user_bar_items' %>
           <% if user_signed_in? %>
             </div>
           <% end %>
         </nav>
+        <nav class="globalHeader__mainNav">
+          <ul>
+            <li><%= link_to 'Home', :root %></li>
+            <li><%= link_to 'Forums', :root %></li>
+          </ul>
+        </nav>
         <div class="clearBoth"></div>
       </div>
     </header>
-    <div class="wrapper">
-      <nav class="globalNavigation">
-        <ul>
-          <li><%= link_to 'Home', :root %></li>
-          <li><%= link_to 'Forum', :root %></li>
-          <li><%= link_to '', :root %></li>
-        </ul>
-      </nav>
-    </div>
     <main>
       <div class="wrapper">
         <%= yield %>
