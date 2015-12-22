@@ -3,7 +3,8 @@
         var config,
             methods,
             $trigger,
-            $menu;
+            $menu,
+            voidClick;
 
         config = {
             identifiers: {
@@ -16,10 +17,21 @@
             $.extend({}, config, arguments[0]);
 
         methods = {
+            toggleMenu: function () {
+                $trigger.toggleClass($trigger.data('triggered-classname'));
+                $menu.toggle();
+            },
             createListeners: function () {
                 $trigger.on('click', function () {
-                    $trigger.toggleClass($trigger.data('triggered-classname'));
-                    $menu.toggle();
+                    voidClick = true;
+                    methods.toggleMenu();
+                });
+
+                $(document).on('click', function () {
+                    if ($menu.is(':visible') && !voidClick)
+                        methods.toggleMenu();
+
+                    voidClick = false;
                 });
             },
             initialize: function () {
