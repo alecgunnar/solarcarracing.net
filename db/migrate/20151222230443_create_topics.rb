@@ -2,7 +2,7 @@ class CreateTopics < ActiveRecord::Migration
   def change
     create_table :topics do |t|
       t.string :name, null: false
-      t.string :seo_name, limit: 64, null: true, default: nil
+      t.string :seo_name, null: false
       t.datetime :post_date, null: false
       t.integer :forum_id, null: false
       t.integer :user_id, null: false
@@ -14,7 +14,6 @@ class CreateTopics < ActiveRecord::Migration
     add_foreign_key :topics, :forums
     add_foreign_key :topics, :users
 
-    add_index :topics, :seo_name, unique: true
     add_index :topics, :forum_id
     add_index :topics, :user_id
   end

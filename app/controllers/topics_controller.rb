@@ -1,5 +1,5 @@
 class TopicsController < ApplicationController
   def show
-    @topic = Topic.find_by_seo_name params[:seo_name]
+    @topic = Topic.find params[:id]
   end
 end

@@ -2,21 +2,27 @@ class User < ActiveRecord::Base
   include Gravtastic
   gravtastic default: "wavatar"
 
-  validates_presence_of :username
+  validates_presence_of :username, :seo_name
   validates_uniqueness_of :username, case_sensitive: false
+  validates :username, format: { with: /\A[a-zA-Z0-9]+\z/, message: 'may only contain letters and numbers.' }
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   has_many :topics
 
-  after_save :create_seo_name, if: 'seo_name.nil?'
+  before_validation :set_seo_name
 
   def to_param
-    self.seo_name
+    "#{id}-#{seo_name}"
+  end
+
+  def username= (username)
+    write_attribute :username, username
+    set_seo_name
   end
 
   private
-    def create_seo_name
-      update seo_name: SEO.generate_seo_name(self.id, self.username)
+    def set_seo_name
+      self.seo_name = username.parameterize
     end
 end

@@ -4,6 +4,6 @@ class ForumsController < ApplicationController
   end
 
   def show
-    @forum = Forum.find_by_seo_name params[:seo_name]
+    @forum = Forum.find params[:id]
   end
 end

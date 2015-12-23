@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20151223040917) do
 
   create_table "forums", force: :cascade do |t|
     t.string  "name",         limit: 255,             null: false
-    t.string  "seo_name",     limit: 64
+    t.string  "seo_name",     limit: 255,             null: false
     t.string  "description",  limit: 255
     t.integer "num_topics",   limit: 4,   default: 0
     t.integer "num_posts",    limit: 4,   default: 0
@@ -24,11 +24,10 @@ ActiveRecord::Schema.define(version: 20151223040917) do
   end
 
   add_index "forums", ["parent_id"], name: "index_forums_on_parent_id", using: :btree
-  add_index "forums", ["seo_name"], name: "index_forums_on_seo_name", unique: true, using: :btree
 
   create_table "topics", force: :cascade do |t|
     t.string   "name",      limit: 255,                 null: false
-    t.string   "seo_name",  limit: 64
+    t.string   "seo_name",  limit: 255,                 null: false
     t.datetime "post_date",                             null: false
     t.integer  "forum_id",  limit: 4,                   null: false
     t.integer  "user_id",   limit: 4,                   null: false
@@ -38,7 +37,6 @@ ActiveRecord::Schema.define(version: 20151223040917) do
   end
 
   add_index "topics", ["forum_id"], name: "index_topics_on_forum_id", using: :btree
-  add_index "topics", ["seo_name"], name: "index_topics_on_seo_name", unique: true, using: :btree
   add_index "topics", ["user_id"], name: "index_topics_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
@@ -57,13 +55,12 @@ ActiveRecord::Schema.define(version: 20151223040917) do
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email",      limit: 255
     t.string   "username",               limit: 255
-    t.string   "seo_name",               limit: 64
+    t.string   "seo_name",               limit: 255,              null: false
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
-  add_index "users", ["seo_name"], name: "index_users_on_seo_name", unique: true, using: :btree
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
   add_foreign_key "forums", "forums", column: "parent_id"
