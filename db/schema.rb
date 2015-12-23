@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20151223172759) do
     t.string  "description",  limit: 255
     t.integer "num_topics",   limit: 4,   default: 0
     t.integer "num_posts",    limit: 4,   default: 0
-    t.integer "last_post_id", limit: 4,   default: 0
+    t.integer "last_post_id", limit: 4
     t.integer "parent_id",    limit: 4
   end
 
@@ -35,14 +35,15 @@ ActiveRecord::Schema.define(version: 20151223172759) do
   end
 
   create_table "topics", force: :cascade do |t|
-    t.string   "name",      limit: 255,                 null: false
-    t.string   "seo_name",  limit: 255,                 null: false
-    t.datetime "post_date",                             null: false
-    t.integer  "forum_id",  limit: 4,                   null: false
-    t.integer  "user_id",   limit: 4,                   null: false
-    t.integer  "num_posts", limit: 4,   default: 1
-    t.boolean  "pinned",    limit: 1,   default: false
-    t.boolean  "closed",    limit: 1,   default: false
+    t.string   "name",         limit: 255,                 null: false
+    t.string   "seo_name",     limit: 255,                 null: false
+    t.datetime "post_date",                                null: false
+    t.integer  "forum_id",     limit: 4,                   null: false
+    t.integer  "user_id",      limit: 4,                   null: false
+    t.integer  "num_posts",    limit: 4,   default: 1
+    t.integer  "last_post_id", limit: 4
+    t.boolean  "pinned",       limit: 1,   default: false
+    t.boolean  "closed",       limit: 1,   default: false
   end
 
   add_index "topics", ["forum_id"], name: "index_topics_on_forum_id", using: :btree

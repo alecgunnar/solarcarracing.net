@@ -1,10 +1,14 @@
 <h1><%= @forum.name %></h1>
 <% if @forum.num_topics == 0 %>
-  <div class="alert">This forum does not have any topics.</div>
+  <div class="message alert">This forum does not have any topics.</div>
 <% end %>
 
 <% for topic in @forum.topics %>
-  <div>
-    <%= link_to topic.name, topic_path(topic) %>
+  <div class="topic">
+    <%= link_to topic.name, topic_path(topic), class: 'topic__name' %>
+    <div class="topic__description">
+      <div class="topic__description__stats">Last post by <%= link_to topic.last_post.author.username, profile_path(topic.last_post.author) %> on <%= topic.last_post.post_date.strftime t 'time_format' %></div>
+      Started by <%= link_to topic.author.username, profile_path(topic.author) %> on <%= topic.post_date.strftime t 'time_format' %>
+    </div>
   </div>
 <% end %>

@@ -6,7 +6,7 @@ class CreateForums < ActiveRecord::Migration
       t.string :description
       t.integer :num_topics, default: 0
       t.integer :num_posts, default: 0
-      t.integer :last_post_id, default: 0
+      t.integer :last_post_id, null: true, default: nil
       t.integer :parent_id, index: true, null: true, default: nil
     end
 

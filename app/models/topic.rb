@@ -1,12 +1,12 @@
 class Topic < ActiveRecord::Base
   belongs_to :forum
   belongs_to :author, class_name: 'User', foreign_key: 'user_id'
+  belongs_to :last_post, class_name: 'Post', foreign_key: 'last_post_id'
   has_many :posts
 
   validates_presence_of :name, :seo_name, :forum, :author
 
   before_validation :set_post_date
-  after_save :create_seo_name, if: 'seo_name.nil?'
   after_create :update_parent_forum_stats, on: :create
 
   def to_param
@@ -16,6 +16,11 @@ class Topic < ActiveRecord::Base
   def name= (name)
     write_attribute :name, name
     set_seo_name
+  end
+
+  def last_post= (post)
+    write_attribute :last_post_id, post.id
+    forum.last_post = post
   end
 
   private

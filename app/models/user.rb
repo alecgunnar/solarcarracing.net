@@ -10,8 +10,6 @@ class User < ActiveRecord::Base
 
   has_many :topics
 
-  before_validation :set_seo_name
-
   def to_param
     "#{id}-#{seo_name}"
   end

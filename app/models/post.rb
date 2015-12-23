@@ -13,12 +13,12 @@ class Post < ActiveRecord::Base
     end
 
     def update_topic_stats
+      topic.last_post = self
       topic.increment :num_posts
       topic.save!
     end
 
     def update_forum_stats
-      topic.forum.last_post = self
       topic.forum.increment :num_posts
       topic.forum.save!
     end

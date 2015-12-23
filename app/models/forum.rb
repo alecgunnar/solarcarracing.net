@@ -15,6 +15,11 @@ class Forum < ActiveRecord::Base
     set_seo_name
   end
 
+  def last_post= (post)
+    return unless last_post.nil? or post.post_date > last_post.post_date
+    write_attribute :last_post_id, post.id
+  end
+
   private
     def set_seo_name
       self.seo_name = name.parameterize

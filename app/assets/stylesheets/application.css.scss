@@ -25,7 +25,7 @@ a {
 }
 
 .wrapper {
-    max-width: $wrapper-width;
+    max-width: $wrapper-max-width;
     min-width: $wrapper-min-width;
     margin: 0 auto;
 }
@@ -80,26 +80,22 @@ a {
     padding: 0 $padding;
     border-radius: $border-radius;
     cursor: pointer;
-}
-
-.userBar__currentMember--triggered .userBar__currentMember__trigger:before {
-    transform: rotate(135deg);
-    margin: 0 0 -3px;
-}
-
-.userBar__currentMember__trigger {
-    display: inline-block;
-    margin-right: $margin;
+    position: relative;
 
     &:before {
+        background: transparent;
         border-left: 2px solid $white;
         border-bottom: 2px solid $white;
-        margin-top: -11px;
-        width: 7px;
-        height: 7px;
-        display: block;
-        content: " ";
-        transform: rotate(-45deg);
+        top: $padding + 3px;
+        right: $padding * 2;
+
+        @include carrot(7px, 7px, -45deg);
+    }
+
+    &.userBar__currentMember--triggered:before {
+        top: $padding * 2 - 3px;
+
+        @include carrot(7px, 7px, 135deg);
     }
 }
 
@@ -107,7 +103,7 @@ a {
     width: $global-header-height / 3;
     height: $global-header-height / 3;
     vertical-align: middle;
-    margin: 0 $margin * 2 0 $margin;
+    margin: 0 $margin * 4 0 $margin;
 }
 
 .userBar__currentMember__menu {
@@ -131,14 +127,10 @@ a {
 
     &:before {
         background-color: $primary-darker;
-        position: absolute;
         top: -7px;
         right: ($margin * 2) - 3px;
-        width: 14px;
-        height: 14px;
-        display: block;
-        transform: rotate(45deg);
-        content: " ";
+
+        @include carrot(14px, 14px, 45deg);
     }
 }
 

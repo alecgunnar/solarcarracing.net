@@ -1,0 +1,8 @@
+@mixin carrot ($width, $height, $rotate) {
+    position: absolute;
+    width: $width;
+    height: $height;
+    display: block;
+    transform: rotate($rotate);
+    content: " ";
+}
