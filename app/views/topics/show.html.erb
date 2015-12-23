@@ -1,2 +1,12 @@
 <h1><%= @topic.name %></h1>
 Posted by <%= link_to @topic.author.username, profile_path(@topic.author) %> on <%= @topic.post_date.strftime t 'time_format' %>
+
+<% for post in @topic.posts %>
+  <a name='post_<%= post.id %>'></a>
+  <div>
+    <div>Posted by <%= link_to post.author.username, profile_path(post.author) %></div>
+    <div>
+      <%= post.content %>
+    </div>
+  </div>
+<% end %>

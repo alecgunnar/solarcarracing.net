@@ -1,12 +1,13 @@
 class Topic < ActiveRecord::Base
   belongs_to :forum
   belongs_to :author, class_name: 'User', foreign_key: 'user_id'
+  has_many :posts
 
   validates_presence_of :name, :seo_name, :forum, :author
 
   before_validation :set_post_date
   after_save :create_seo_name, if: 'seo_name.nil?'
-  after_create :update_parent_forum_topic_count, on: :create
+  after_create :update_parent_forum_stats, on: :create
 
   def to_param
     "#{id}-#{seo_name}"
@@ -26,9 +27,8 @@ class Topic < ActiveRecord::Base
       self.seo_name = name.parameterize
     end
 
-    def update_parent_forum_topic_count
+    def update_parent_forum_stats
       forum.increment :num_topics
-      forum.increment :num_posts, num_posts
       forum.save!
     end
 end
