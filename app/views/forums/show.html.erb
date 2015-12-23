@@ -5,6 +5,6 @@
 
 <% for topic in @forum.topics %>
   <div>
-    <%= link_to topic.name, topic_path(topic.seo_name) %>
+    <%= link_to topic.name, topic_path(topic) %>
   </div>
 <% end %>

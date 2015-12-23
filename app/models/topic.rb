@@ -9,8 +9,11 @@ class Topic < ActiveRecord::Base
   before_create :prepare_topic
   after_create :update_forum_topic_count
 
-  private
+  def to_param
+    self.seo_name
+  end
 
+  private
     def prepare_topic
       self.post_date = Time.new
 
