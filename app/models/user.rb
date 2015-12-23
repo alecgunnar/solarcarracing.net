@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
 
   before_validation :prepare_user
 
+  has_many :topics
+
   def to_param
     self.seo_name
   end
