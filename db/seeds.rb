@@ -4,6 +4,8 @@ root.username              = 'Root'
 root.email                 = 'root@domain.com'
 root.password              = '$iamroot'
 root.password_confirmation = '$iamroot'
+root.is_admin              = true
+root.is_moderator          = true
 root.skip_confirmation!
 root.save
 
