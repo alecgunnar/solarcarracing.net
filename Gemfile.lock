@@ -94,6 +94,7 @@ GEM
     nokogiri (1.6.7.1)
       mini_portile2 (~> 2.0.0.rc2)
     orm_adapter (0.5.0)
+    possessive (1.0.1)
     rack (1.6.4)
     rack-protection (1.5.3)
       rack
@@ -188,6 +189,7 @@ DEPENDENCIES
   jquery-rails
   mailcatcher
   mysql
+  possessive
   rails (= 4.2.1)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)

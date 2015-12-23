@@ -36,6 +36,9 @@ gem 'devise'
 # Gravtastic to get gravatar images
 gem 'gravtastic'
 
+# This way posessives are correctly punctuated
+gem 'possessive'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
