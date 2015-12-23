@@ -5,7 +5,7 @@ class Post < ActiveRecord::Base
   validates_presence_of :topic, :author, :post_date, :content
 
   before_validation :set_post_date
-  after_create :update_topic_stats, :update_forum_stats
+  after_create :update_topic_stats, :update_forum_stats, :update_author_stats
 
   private
     def set_post_date
@@ -21,5 +21,10 @@ class Post < ActiveRecord::Base
     def update_forum_stats
       topic.forum.increment :num_posts
       topic.forum.save!
+    end
+
+    def update_author_stats
+      author.increment :num_posts
+      author.save!
     end
 end

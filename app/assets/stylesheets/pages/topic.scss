@@ -1,5 +1,4 @@
 .post {
-    padding: $padding;
     margin-top: $margin;
     display: table;
     width: 100%;
@@ -16,7 +15,7 @@
 .post__author {
     background-color: $light-gray;
     margin: 0 $margin $margin 0;
-    width: 250px;
+    width: 300px;
     float: left;
     position: relative;
 
@@ -31,7 +30,17 @@
 .author__avatar {
     width: 50px;
     height: 50px;
-    vertical-align: middle;
+    margin-right: $margin;
+    float: left;
+}
+
+.author__info a {
+    display: inline-block;
+    margin-bottom: $margin;
+}
+
+.info__postCount {
+    font-size: .8rem;
 }
 
 .post__content {

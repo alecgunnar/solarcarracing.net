@@ -4,7 +4,7 @@
     <div class="forum">
       <%= link_to forum.name, forum_path(forum), class: 'forum__name' %>
       <div class="forum__description">
-        <div class="forum__description__stats"><%= pluralize(forum.num_posts, 'post') %>, <%= pluralize(forum.num_topics, 'topic') %><% if forum.last_post_id > 0 %>, last post by <%= link_to forum.last_post.author.username, profile_path(forum.last_post.author) %> in <%= link_to forum.last_post.topic.name, post_path(forum.last_post) %> on <%= forum.last_post.post_date.strftime t 'time_format' %><% else %><% end %></div>
+        <div class="forum__description__stats"><%= number_with_delimiter forum.num_posts %> <%= 'post'.pluralize forum.num_posts %>, <%= number_with_delimiter forum.num_topics %> <%= 'topic'.pluralize forum.num_topics %><% if forum.last_post_id > 0 %>, last post by <%= link_to forum.last_post.author.username, profile_path(forum.last_post.author) %> in <%= link_to forum.last_post.topic.name, post_path(forum.last_post) %> on <%= forum.last_post.post_date.strftime t 'time_format' %><% else %><% end %></div>
         <%= forum.description %>
       </div>
     </div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151223172759) do
+ActiveRecord::Schema.define(version: 20151223191411) do
 
   create_table "forums", force: :cascade do |t|
     t.string  "name",         limit: 255,             null: false
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 20151223172759) do
     t.string   "seo_name",               limit: 255,                 null: false
     t.boolean  "is_admin",               limit: 1,   default: false
     t.boolean  "is_moderator",           limit: 1,   default: false
+    t.integer  "num_posts",              limit: 4,   default: 0
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
