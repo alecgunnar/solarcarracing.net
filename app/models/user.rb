@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 
   validates_presence_of :username, :seo_name
   validates_uniqueness_of :username, case_sensitive: false
-  validates :username, format: { with: /\A[a-zA-Z0-9]+\z/, message: 'may only contain letters and numbers.' }
+  validates :username, format: { with: /\A[a-zA-Z0-9_-]+\z/, message: 'may only contain letters, numbers, dashes, and underscores.' }
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
