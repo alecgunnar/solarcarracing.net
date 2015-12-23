@@ -3,11 +3,12 @@ class CreateForums < ActiveRecord::Migration
     create_table :forums do |t|
       t.string :name, null: false
       t.string :description
-      t.integer :topics, default: 0
-      t.integer :posts, default: 0
+      t.integer :num_topics, default: 0
+      t.integer :num_posts, default: 0
       t.integer :last_post_id, default: 0
-      t.integer :parent_id, index: true, default: 0
-      t.timestamps null: false
+      t.integer :parent_id, index: true, null: true, default: nil
     end
+
+    add_foreign_key :forums, :forums, column: :parent_id
   end
 end

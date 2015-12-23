@@ -2,9 +2,9 @@
   <h3 class="forums__rootTitle"><%= category.name %></h3>
   <% for forum in category.forums %>
     <div class="forums__forum">
-      <a href="" class="forums__forum__name"><%= forum.name %></a>
+      <%= link_to forum.name, forum_path(forum) %>
       <div class="forums__forum__description">
-        <div class="forums__forum__description__stats"><%= forum.posts %> posts, <%= forum.topics %> topics<% if forum.last_post_id > 0 %>, last post<% else %><% end %></div>
+        <div class="forums__forum__description__stats"><%= pluralize(forum.num_posts, 'post') %>, <%= pluralize(forum.num_topics, 'topic') %><% if forum.last_post_id > 0 %>, last post<% else %><% end %></div>
         <%= forum.description %>
       </div>
     </div>

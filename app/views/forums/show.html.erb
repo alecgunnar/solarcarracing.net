@@ -1,0 +1,10 @@
+<h1><%= @forum.name %></h1>
+<% if @forum.num_topics == 0 %>
+  <div class="alert">This forum does not have any topics.</div>
+<% end %>
+
+<% for topic in @forum.topics %>
+  <div>
+    <%= link_to topic.name, topic_path(topic.seo_name) %>
+  </div>
+<% end %>
