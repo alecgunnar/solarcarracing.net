@@ -20,10 +20,10 @@ module SEO
   end
 
   def self.max_name_length
-    64
+    32
   end
 
   def self.generate_seo_name (id, name)
-    id.to_s + name.downcase.split.join(SEO_NAME_WORD_SEP).gsub(/#{valid_chars}/).squeeze('-')[0, max_name_length]
+    "#{id}-#{name.parameterize}"
   end
 end

@@ -2,21 +2,21 @@ class User < ActiveRecord::Base
   include Gravtastic
   gravtastic default: "wavatar"
 
-  validates_presence_of :username, :seo_name
+  validates_presence_of :username
   validates_uniqueness_of :username, case_sensitive: false
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
-  before_validation :prepare_user
-
   has_many :topics
+
+  after_save :create_seo_name, if: 'seo_name.nil?'
 
   def to_param
     self.seo_name
   end
 
   private
-    def prepare_user
-      self.seo_name = self.username.downcase
+    def create_seo_name
+      update seo_name: SEO.generate_seo_name(self.id, self.username)
     end
 end

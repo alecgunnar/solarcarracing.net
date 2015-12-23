@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   # The forums
   get '/forums', to: 'forums#index', as: 'forums'
-  get '/forum/:id', to: 'forums#show', as: 'forum'
+  get '/forum/:seo_name', to: 'forums#show', as: 'forum'
 
   get 'topic/:seo_name', to: 'topics#show', as: 'topic', constraints: { seo_name: /[a-z0-9\-]+/ }
 

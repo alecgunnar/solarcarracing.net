@@ -2,27 +2,27 @@ class Topic < ActiveRecord::Base
   belongs_to :forum
   belongs_to :author, class_name: 'User', foreign_key: 'user_id'
 
-  validates :name, presence: true
-  validates :forum, presence: true
-  validates :author, presence: true
+  validates_presence_of :name, :forum, :author
+  validates_length_of :name, maximum: SEO.max_name_length
 
-  before_create :prepare_topic
-  after_create :update_forum_topic_count
+  before_validation :set_post_date
+  after_save :create_seo_name, if: 'seo_name.nil?'
+  after_create :update_parent_forum_topic_count, on: :create
 
   def to_param
     self.seo_name
   end
 
   private
-    def prepare_topic
+    def set_post_date
       self.post_date = Time.new
-
-      # This looks awful... but it works :)
-      self.seo_name = self.post_date.to_i.to_s
-      self.seo_name << '-' + self.name.downcase.split.join('-').gsub(/[^a-z0-9\-]/, '').squeeze('-')[0, MAX_SEO_NAME_LENGTH]
     end
 
-    def update_forum_topic_count
+    def create_seo_name
+      update seo_name: SEO.generate_seo_name(self.id, self.name)
+    end
+
+    def update_parent_forum_topic_count
       forum.increment :num_topics
       forum.increment :num_posts, num_posts
       forum.save!

@@ -2,7 +2,7 @@ class CreateTopics < ActiveRecord::Migration
   def change
     create_table :topics do |t|
       t.string :name, null: false
-      t.string :seo_name, limit: 64, null: false
+      t.string :seo_name, limit: 64, null: true, default: nil
       t.datetime :post_date, null: false
       t.integer :forum_id, null: false
       t.integer :user_id, null: false
