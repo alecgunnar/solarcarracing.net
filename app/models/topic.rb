@@ -6,7 +6,7 @@ class Topic < ActiveRecord::Base
 
   validates_presence_of :name, :seo_name, :forum, :author
 
-  before_validation :set_post_date
+  before_save :set_post_date, on: create
   after_create :update_parent_forum_stats, on: :create
 
   def to_param
@@ -23,9 +23,29 @@ class Topic < ActiveRecord::Base
     forum.last_post = post
   end
 
+  def new_post (post)
+    self.last_post = post
+    increment :num_posts
+
+    forum.increment :num_posts
+    forum.save!
+  end
+
+  def del_post (post)
+    if post == last_post
+      forum.update_last_post if forum.last_post == last_post
+      self.last_post = posts[-2]
+    end
+
+    decrement :num_posts
+
+    forum.decrement :num_posts
+    forum.save!
+  end
+
   private
     def set_post_date
-      self.post_date = Time.new
+      self.post_date ||= Time.new
     end
 
     def set_seo_name

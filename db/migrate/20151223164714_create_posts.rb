@@ -8,5 +8,8 @@ class CreatePosts < ActiveRecord::Migration
       t.boolean :edited, default: false
       t.datetime :edit_date, null: true, default: nil
     end
+
+    add_foreign_key :posts, :topics
+    add_foreign_key :posts, :users
   end
 end

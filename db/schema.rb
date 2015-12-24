@@ -34,6 +34,9 @@ ActiveRecord::Schema.define(version: 20151223191411) do
     t.datetime "edit_date"
   end
 
+  add_index "posts", ["topic_id"], name: "fk_rails_70d0b6486a", using: :btree
+  add_index "posts", ["user_id"], name: "fk_rails_5b5ddfd518", using: :btree
+
   create_table "topics", force: :cascade do |t|
     t.string   "name",         limit: 255,                 null: false
     t.string   "seo_name",     limit: 255,                 null: false
@@ -77,6 +80,8 @@ ActiveRecord::Schema.define(version: 20151223191411) do
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
   add_foreign_key "forums", "forums", column: "parent_id"
+  add_foreign_key "posts", "topics"
+  add_foreign_key "posts", "users"
   add_foreign_key "topics", "forums"
   add_foreign_key "topics", "users"
 end

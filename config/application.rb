@@ -8,6 +8,7 @@ Bundler.require(*Rails.groups)
 
 module SolarcarracingNet
   class Application < Rails::Application
+    config.time_zone                                      = 'Eastern Time (US & Canada)'
     config.active_record.raise_in_transactional_callbacks = true
   end
 end

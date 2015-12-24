@@ -1,30 +1,32 @@
 class Post < ActiveRecord::Base
   belongs_to :topic
+  belongs_to :forum, polymorphic: :topic
   belongs_to :author, class_name: 'User', foreign_key: 'user_id'
 
-  validates_presence_of :topic, :author, :post_date, :content
+  validates_presence_of :topic, :author, :content
 
-  before_validation :set_post_date
-  after_create :update_topic_stats, :update_forum_stats, :update_author_stats
+  before_save :set_post_date, on: create
+  after_save :update_stats_for_create, on: create
+  before_destroy :update_stats_for_delete
 
   private
     def set_post_date
-      self.post_date = Time.new
+      self.post_date ||= Time.new
     end
 
-    def update_topic_stats
-      topic.last_post = self
-      topic.increment :num_posts
+    def update_stats_for_create
+      topic.new_post self
       topic.save!
-    end
 
-    def update_forum_stats
-      topic.forum.increment :num_posts
-      topic.forum.save!
-    end
-
-    def update_author_stats
       author.increment :num_posts
+      author.save!
+    end
+
+    def update_stats_for_delete
+      topic.del_post self
+      topic.save!
+
+      author.decrement :num_posts
       author.save!
     end
 end
