@@ -13,8 +13,20 @@
       </div>
     </div>
     <div class="post__content">
+      <% if user_signed_in? %>
+        <div class="post__content__options">
+          <ul class="post__content__options__menu">
+            <% if current_user.is_moderator? or post.author == current_user %>
+              <li><%= link_to 'Edit', forums_path %></li>
+            <% end %>
+            <li><%= link_to 'Reply', forums_path %></li>
+          </ul>
+        </div>
+      <% end %>
       <div class="post__content__postDate">Posted on <%= post.post_date.strftime t 'time_format' %></div>
-      <%= raw markdown.render post.content %>
+      <div class="post__content__text">
+        <%= raw post.content.bbcode_to_html %>
+      </div>
     </div>
     <div class="clearBoth"></div>
   </div>

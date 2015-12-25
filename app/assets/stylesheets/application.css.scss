@@ -115,6 +115,7 @@ a {
     width: $userbar-menu-width;
     border-radius: $border-radius;
     display: none;
+    z-index: 100;
 
     ul {
         @extend .verticalMenu;

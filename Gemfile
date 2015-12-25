@@ -39,8 +39,8 @@ gem 'gravtastic'
 # This way posessives are correctly punctuated
 gem 'possessive'
 
-# Markdown for post formatting!
-gem 'redcarpet'
+# BBcode for post formatting!
+gem 'bb-ruby'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -46,7 +46,6 @@
 .post__content {
     background-color: $lighter-gray;
     width: 100%;
-    height: 100px;
     vertical-align: top;
 
     p {
@@ -61,4 +60,60 @@
 .post__content__postDate {
     color: $dark-gray;
     margin-bottom: $margin;
+}
+
+.post__content__text {
+    height: 50px;
+}
+
+.post__content__options {
+    padding: $padding * 1.5;
+    cursor: pointer;
+    position: relative;
+    z-index: 5;
+    border-top-left-radius: $border-radius;
+    border-top-right-radius: $border-radius;
+    float: right;
+
+    &.active {
+        background-color: $gray;
+
+        &:before {
+            border-color: $lighter-gray;
+            transform: rotate(-135deg);
+            top: $padding;
+        }
+    }
+
+    &:before {
+        background: transparent;
+        border-bottom: 2px solid $gray;
+        border-right: 2px solid $gray;
+        position: absolute;
+        top: $padding / 2;
+        left: $padding;
+
+        @include carrot(7px, 7px, 45deg);
+    }
+}
+
+.post__content__options__menu {
+    background-color: $gray;
+    border-radius: $border-radius;
+    padding: $padding;
+    top: ($padding * 2) + 3px;
+    right: 0;
+    width: 150px;
+    position: absolute;
+    display: none;
+
+    li {
+        margin-bottom: $margin;
+
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+    }
+
+    @extend .verticalMenu;
 }
