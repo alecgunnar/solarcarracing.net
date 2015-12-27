@@ -1,14 +1,22 @@
+<h1>Forums</h1>
+
 <% for category in @categories %>
-  <h3 class="forums__rootTitle"><%= category.name %></h3>
-  <% for forum in category.forums %>
-    <div class="forum">
-      <%= link_to forum.name, forum_path(forum), class: 'forum__name' %>
-      <div class="forum__description">
-        <div class="forum__description__stats">
-          <%= number_with_delimiter forum.num_posts %> <%= 'post'.pluralize forum.num_posts %> in <%= number_with_delimiter forum.num_topics %> <%= 'topic'.pluralize forum.num_topics %><% if !forum.last_post_id.nil? %>, last post by <%= link_to forum.last_post.author.username, profile_path(forum.last_post.author) %> <%= short_time forum.last_post.post_date %><% end %>
+  <div class="forums__category">
+    <h3 class="category__title"><%= category.name %></h3>
+    <% for forum in category.forums %>
+      <div class="category__forum">
+        <%= link_to forum.name, forum_path(forum), class: 'forum__name' %>
+        <div class="forum__description">
+          <div class="forum__description__stats">
+            <% if forum.num_topics > 0 %>
+              <%= number_with_delimiter forum.num_posts %> <%= 'post'.pluralize forum.num_posts %> in <%= number_with_delimiter forum.num_topics %> <%= 'topic'.pluralize forum.num_topics %><% if !forum.last_post_id.nil? %>, last post by <%= link_to forum.last_post.author.username, profile_path(forum.last_post.author) %> <%= short_time forum.last_post.post_date %><% end %>
+            <% else %>
+              No topics
+            <% end %>
+          </div>
+          <%= forum.description %>
         </div>
-        <%= forum.description %>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 <% end %>

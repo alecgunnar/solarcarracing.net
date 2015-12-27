@@ -1,8 +1,12 @@
-.forums__rootTitle {
-
+.category__title {
+    background-color: $primary;
+    font-weight: 400;
+    color: $white;
+    padding: $padding;
+    margin: 0;
 }
 
-.forum,
+.category__forum,
 .topic {
     padding: $padding;
 

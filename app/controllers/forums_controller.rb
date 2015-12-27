@@ -1,6 +1,6 @@
 class ForumsController < ApplicationController
   def index
-    @categories = Forum.where 'parent_id IS NULL'
+    @categories = Forum.joins(:forums).uniq
   end
 
   def show
