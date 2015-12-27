@@ -3,6 +3,9 @@ Rails.application.routes.draw do
 
   root 'welcome#homepage'
 
+  # Account management
+  get '/account', to: 'account#overview', as: 'account'
+
   # Profiles
   get '/profile/:id', to: 'profile#show', as: 'profile', constraints: { id: SEO_NAME_PATTERN }
 

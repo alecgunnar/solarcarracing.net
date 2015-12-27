@@ -1,0 +1,14 @@
+<%= render 'layouts/parts/header' %>
+<h1>Manage Account</h1>
+<div class="account__navigation">
+  <h3>Choose what you'd like to change</h3>
+  <ul>
+    <li><%= link_to 'Email Address or Password', root_path %></li>
+    <li><%= link_to 'Profile Information', root_path %></li>
+    <li><%= link_to 'Profile Picture', root_path %></li>
+  </ul>
+</div>
+<div class="account__form">
+  <%= yield %>
+</div>
+<%= render 'layouts/parts/footer' %>

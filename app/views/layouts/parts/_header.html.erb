@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Solar Car Racing</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <header class="globalHeader">
+      <div class="wrapper">
+        <div class="branding">
+          <%= link_to 'Solar Car Racing', :root %>
+        </div>
+        <nav class="userBar">
+          <% if user_signed_in? %>
+            <div class="userBar__currentMember" id="currentMember-menu-trigger" data-triggered-classname="userBar__currentMember--triggered">
+              Hello <%= current_user.username %> <%= image_tag current_user.gravatar_url, class: 'userBar__currentMember__avatar' %>
+            </div>
+            <div class="userBar__currentMember__menu" id="currentMember-menu-menu">
+          <% end %>
+          <%= render 'users/menu/user_bar_items' %>
+          <% if user_signed_in? %>
+            </div>
+          <% end %>
+        </nav>
+        <nav class="globalNavigation">
+          <ul>
+            <li><%= link_to 'Home', :root %></li>
+            <li><%= link_to 'Forums', :forums %></li>
+          </ul>
+        </nav>
+        <div class="clearBoth"></div>
+      </div>
+    </header>
+    <main>
+      <div class="wrapper">
