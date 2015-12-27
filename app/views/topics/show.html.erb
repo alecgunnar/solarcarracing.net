@@ -23,7 +23,7 @@
           </ul>
         </div>
       <% end %>
-      <div class="post__content__postDate">Posted on <%= post.post_date.strftime t 'time_format' %></div>
+      <div class="post__content__postDate">Posted <%= short_time post.post_date %></div>
       <div class="post__content__text">
         <%= raw post.content.bbcode_to_html %>
       </div>
