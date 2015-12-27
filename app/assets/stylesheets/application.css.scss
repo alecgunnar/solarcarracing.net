@@ -104,7 +104,7 @@ a {
     width: $global-header-height / 3;
     height: $global-header-height / 3;
     vertical-align: middle;
-    margin: 0 $margin * 4 0 $margin;
+    margin: -3px $margin * 4 0 $margin;
 }
 
 .userBar__currentMember__menu {
