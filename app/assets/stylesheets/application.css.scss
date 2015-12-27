@@ -38,10 +38,13 @@ a {
 .globalHeader {
     background-color: $primary;
     line-height: $global-header-height;
+    font-weight: 400;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
+
+    -webkit-font-smoothing: antialiased;
 }
 
 .branding a {
@@ -93,7 +96,7 @@ a {
         @include carrot(7px, 7px, -45deg);
     }
 
-    &.userBar__currentMember--triggered:before {
+    &.active:before {
         top: $padding * 2 - 3px;
 
         @include carrot(7px, 7px, 135deg);

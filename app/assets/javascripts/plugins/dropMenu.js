@@ -16,7 +16,7 @@
         methods = {
             toggleMenu: function () {
                 config.trigger.toggleClass(config.triggeredClassName);
-                config.menu.toggle();
+                config.menu.fadeToggle(200);
             },
             createListeners: function () {
                 config.trigger.on('click', function () {
