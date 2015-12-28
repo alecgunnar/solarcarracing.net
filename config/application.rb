@@ -13,7 +13,7 @@ module SolarcarracingNet
     VERSION_RELEASE = '0'
     VERSION_NAME    = 'DEV'
 
-    config.version                                        = VERSION_MAJOR + '.' + VERSION_MINOR + '.' + VERSION_RELEASE + (VERSION_NAME ? ' ' + VERSION_NAME : '')
+    config.version                                        = VERSION_MAJOR + '.' + VERSION_MINOR + '.' + VERSION_RELEASE + (!VERSION_NAME.nil? ? ' ' + VERSION_NAME : '')
     config.time_zone                                      = 'Eastern Time (US & Canada)'
     config.active_record.raise_in_transactional_callbacks = true
   end
