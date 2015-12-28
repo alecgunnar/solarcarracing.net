@@ -1,7 +1,7 @@
 class AccountController < ApplicationController
   layout "account"
 
-  before_action :authenticate_user!
+  before_action :require_session
 
   def overview
     
