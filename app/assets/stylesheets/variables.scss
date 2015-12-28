@@ -34,5 +34,7 @@ $secondary-lighter: lighten($secondary, 5%);
 
 $thirdary: #E26700;
 
-$error: #D00;
-$error-darker: darken($error, 5%);
+$alert: #D00;
+$alert-darker: darken($alert, 5%);
+
+$notice: #FFFFE0;

@@ -35,3 +35,6 @@
     </header>
     <main>
       <div class="wrapper">
+        <% for f in flash %>
+          <p class="flash flash--<%= f[0] %>"><%= f[1] %></p>
+        <% end %>

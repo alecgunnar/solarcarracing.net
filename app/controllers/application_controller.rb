@@ -8,6 +8,6 @@ class ApplicationController < ActionController::Base
 
     def require_session
       return if user_signed_in?
-      redirect_to new_user_session_path, notice: 'You must sign in to continue!'
+      redirect_to new_user_session_path, alert: 'You must sign in to continue!'
     end
 end

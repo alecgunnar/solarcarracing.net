@@ -5,7 +5,7 @@
 }
 
 .formWrap__errors {
-    background-color: $error-darker;
+    background-color: $alert-darker;
     color: $white;
     padding: $padding;
     margin-bottom: $margin;
@@ -30,7 +30,7 @@
         display: inline;
 
         label {
-            color: $error;
+            color: $alert;
         }
     }
 }

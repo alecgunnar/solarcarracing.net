@@ -48,6 +48,22 @@ h3 {
     }
 }
 
+/* Flash messages */
+
+.flash {
+    padding: $padding;
+    margin: 0 0 $margin;
+}
+
+.flash--notice {
+    background-color: $notice;
+}
+
+.flash--alert {
+    background-color: $alert;
+    color: $white;
+}
+
 /* Components */
 
 .wrapper {

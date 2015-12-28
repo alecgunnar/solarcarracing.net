@@ -2,6 +2,6 @@
     margin: 0 0 $margin;
 
     ul {
-        @extend .horizontalTabs--anchored;
+        @extend .horizontalTabs, .horizontalTabs--anchored;
     }
 }
