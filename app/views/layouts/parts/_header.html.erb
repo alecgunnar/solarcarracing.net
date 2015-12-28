@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>SolarCarRacing.net<% if content_for? :page_title %> &mdash; <%= yield :page_title %><% end %></title>
+    <title><% if content_for? :page_title %><%= yield :page_title %> &mdash; <% end %>SolarCarRacing.net</title>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
