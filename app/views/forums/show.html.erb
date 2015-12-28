@@ -25,8 +25,8 @@
         <% end %>
       </div>
       <div class="category__forumStats">
-        <% if forum.num_topics > 0 %>
-          <%= number_with_delimiter forum.num_posts %> <%= 'post'.pluralize forum.num_posts %> in <%= number_with_delimiter forum.num_topics %> <%= 'topic'.pluralize forum.num_topics %><% if !forum.last_post_id.nil? %>, last post by <%= link_to forum.last_post.author.username, profile_path(forum.last_post.author) %> <%= short_time forum.last_post.post_date %><% end %>
+        <% if forum.num_posts_stack > 0 %>
+          <%= pluralize forum.num_posts_stack, 'post' %> in <%= pluralize forum.num_topics_stack, 'topic' %>, last post by <%= link_to forum.last_post_stack.author.username, profile_path(forum.last_post_stack.author) %> <%= short_time forum.last_post_stack.post_date %>
         <% else %>
           No posts here
         <% end %>
@@ -39,7 +39,7 @@
 <% if !@forum.category.nil? %>
   <h3>Topics</h3>
 
-  <% if @forum.num_topics == 0 %>
+  <% if @forum.topics.length == 0 %>
     <div class="forum__topic forum__topic--noTopics">This forum does not have any topics.</div>
   <% end %>
 

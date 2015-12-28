@@ -7,6 +7,8 @@ class Forum < ActiveRecord::Base
 
   validates_presence_of :seo_name
 
+  @stack_last_post = nil
+
   def to_param
     "#{id}-#{seo_name}"
   end
@@ -16,9 +18,32 @@ class Forum < ActiveRecord::Base
     set_seo_name
   end
 
-  def last_post= (post)
-    return unless last_post.nil? or post.post_date > last_post.post_date
-    write_attribute :last_post_id, post.id
+  def num_topics_stack
+    if forums.length > 0
+      stack_topics = Forum.where('parent_id = ?', id).sum(:num_topics)
+    end
+
+    num_topics + (stack_topics || 0)
+  end
+
+  def num_posts_stack
+    if forums.length > 0
+      stack_posts = Forum.where('parent_id = ?', id).sum(:num_posts)
+    end
+
+    num_topics + (stack_posts || 0)
+  end
+
+  def last_post_stack
+    if forums.length > 0 and @stack_last_post.nil?
+      @stack_last_post = Forum.where('parent_id = ?', id).order('last_post_id desc').limit(1)[0]
+    end
+
+    if !@stack_last_post.nil? and (last_post.nil? or @stack_last_post.last_post.post_date > last_post.post_date)
+      @stack_last_post.last_post
+    else
+      last_post
+    end
   end
 
   # This method will update the last post
