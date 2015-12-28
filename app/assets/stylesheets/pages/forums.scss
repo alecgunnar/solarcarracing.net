@@ -37,3 +37,16 @@
 .forum__topicStats {
     float: right;
 }
+
+.category__forumSubs {
+    margin: $margin 0 0;
+
+    ul {
+        @extend .horizontalMenu;
+
+        &:before {
+            content: "└";
+            display: inline-block;
+        }
+    }
+}
