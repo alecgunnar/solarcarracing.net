@@ -8,13 +8,13 @@
 <% title 'Manage Account' %> 
 
 <%= render 'layouts/parts/header' %>
-<div class="account__navigation">
+<nav class="account__navigation">
   <ul>
     <% for link in nav_links %>
       <li><%= link_to link[:label], link[:path], class: link[:action] == action_name ? 'active' : '' %></li>
     <% end %>
   </ul>
-</div>
+</nav>
 <div class="account__panel">
   <%= yield %>
 </div>
