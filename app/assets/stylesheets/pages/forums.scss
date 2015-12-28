@@ -45,8 +45,20 @@
         @extend .horizontalMenu;
 
         &:before {
-            content: "└";
+            content: '└';
             display: inline-block;
+        }
+
+        li {
+            margin: 0;
+
+            &:after {
+                content: ',';
+            }
+
+            &:last-of-type:after {
+                content: '';
+            }
         }
     }
 }
