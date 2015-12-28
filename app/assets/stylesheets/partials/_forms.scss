@@ -54,7 +54,8 @@
 }
 
 .formOptions {
-    margin-top: $margin;
+    text-align: center;
+    margin: $margin * 2 0 $margin;
 
     ul {
         @extend .horizontalMenu;
