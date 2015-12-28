@@ -4,13 +4,14 @@
     display: table;
     table-layout: fixed;
     width: 100%;
-    border-bottom: 2px solid $light-gray;
+    border-bottom: 2px solid $primary-darker;
 
     @extend .horizontalMenu;
 
     li {
-        background-color: $lighter-gray;
+        background-color: $primary;
         text-align: center;
+        color: $white;
         padding: $padding;
         border-right: 2px solid $white;
         display: table-cell;
@@ -22,7 +23,7 @@
         }
 
         &.active, &:hover {
-            background-color: $light-gray;
+            background-color: $primary-darker;
         }
     }
 }
@@ -37,15 +38,16 @@
         }
 
         a {
-            background-color: $lighter-gray;
+            background-color: $primary;
             text-decoration: none;
+            color: $white;
             display: block;
             padding: $padding;
             border-top-left-radius: $border-radius;
             border-top-right-radius: $border-radius;
 
             &.active, &:hover {
-                background-color: $light-gray;
+                background-color: $primary-darker;
             }
         }
     }
