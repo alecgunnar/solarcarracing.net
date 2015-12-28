@@ -1,11 +1,11 @@
-<h1><%= @forum.name %></h1>
+<% title @forum.name %>
 
 <% if @forum.forums.length > 0 %>
 <div class="category category--subforums">
   <h3><%= 'Subforum'.pluralize @forum.forums.length %></h3>
   <% for forum in @forum.forums %>
     <div class="category__forum">
-      <%= link_to forum.name, forum_path(forum), class: 'forum__name' %>
+      <%= link_to forum.name, forum_path(forum), class: 'category__forumName' %>
       <div class="category__forumDesc">
         <div class="category__forumStats">
           <% if forum.num_topics > 0 %>
@@ -30,7 +30,7 @@
 
   <% for topic in @forum.topics %>
     <div class="forum__topic">
-      <%= link_to topic.name, topic_path(topic), class: 'topic__name' %>
+      <%= link_to topic.name, topic_path(topic), class: 'forum__topicName' %>
       <div class="forum__topicDesc">
         <div class="forum__topicStats">
           Last post by <%= link_to topic.last_post.author.username, profile_path(topic.last_post.author) %> <%= short_time topic.last_post.post_date %>

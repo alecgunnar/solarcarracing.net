@@ -20,13 +20,17 @@ Rails.application.routes.draw do
   get 'topic/:id', to: 'topics#show', as: 'topic', constraints: { id: SEO_NAME_PATTERN }
 
   devise_scope :user do
+    # Registrations
+    get '/sign-up' => 'users/registrations#new', as: 'new_user_registration'
+    post '/sign-up' => 'users/registrations#create', as: 'user_registration'
+
+    # Sessions
     get '/sign-in' =>'users/sessions#new', as: 'new_user_session'
     post '/sign-in' => 'users/sessions#create', as: 'user_session'
-    delete '/sign-out' => 'users/sessions#destroy', as: 'destroy_user_session', :via => Devise.mappings[:user].sign_out_via
+    delete '/sign-out' => 'users/sessions#destroy', as: 'destroy_user_session'
   end
 
-  devise_for :users, skip: [:sessions], controllers: {
-    registrations: 'users/registrations',
+  devise_for :users, skip: [:sessions, :registrations], controllers: {
     confirmations: 'users/confirmations',
     passwords: 'users/passwords'
   }

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Solar Car Racing</title>
+    <title>SolarCarRacing.net<% if content_for? :page_title %> &mdash; <%= yield :page_title %><% end %></title>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
@@ -35,6 +35,7 @@
     </header>
     <main>
       <div class="wrapper">
+        <% if content_for? :page_title %><h1><%= yield :page_title %></h1><% end %>
         <% for f in flash %>
           <p class="flash flash--<%= f[0] %>"><%= f[1] %></p>
         <% end %>

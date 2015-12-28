@@ -1,11 +1,11 @@
-<h1>Forums</h1>
+<% title 'Forums' %>
 
 <% for category in @categories %>
   <div class="forums__category">
     <h3 class="category__title"><%= link_to category.name, forum_path(category) %></h3>
     <% for forum in category.forums %>
       <div class="category__forum">
-        <%= link_to forum.name, forum_path(forum), class: 'forum__name' %>
+        <%= link_to forum.name, forum_path(forum), class: 'category__forumName' %>
         <div class="category__forumDesc">
           <div class="category__forumStats">
             <% if forum.num_topics > 0 %>

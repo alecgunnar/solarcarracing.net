@@ -5,8 +5,9 @@
   {action: 'profile', label: 'Profile Information', path: account_profile_path},
   {action: 'picture', label: 'Profile Picture', path: account_picture_path}] %>
 
+<% title 'Manage Account' %> 
+
 <%= render 'layouts/parts/header' %>
-<h1>Manage Account</h1>
 <div class="account__navigation">
   <ul>
     <% for link in nav_links %>
