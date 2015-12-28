@@ -6,7 +6,9 @@
     <% for forum in category.forums %>
       <div class="category__forum">
         <div class="category__forumDesc">
-          <%= link_to forum.name, forum_path(forum), class: 'category__forumName' %>
+          <div class="category__forumName">
+            <%= link_to forum.name, forum_path(forum) %>
+          </div>
           <%= forum.description %>
           <% if forum.forums.length > 0 %>
             <div class="category__forumSubs">

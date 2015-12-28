@@ -6,7 +6,9 @@
   <% for forum in @forum.forums %>
     <div class="category__forum">
       <div class="category__forumDesc">
-        <%= link_to forum.name, forum_path(forum), class: 'category__forumName' %>
+        <div class="category__forumName">
+          <%= link_to forum.name, forum_path(forum) %>
+        </div>
         <%= forum.description %>
         <% if forum.forums.length > 0 %>
           <div class="category__forumSubs">
@@ -40,7 +42,9 @@
   <% for topic in @forum.topics %>
     <div class="forum__topic">
       <div class="forum__topicDesc">
-        <%= link_to topic.name, topic_path(topic), class: 'forum__topicName' %>
+        <div class="forum__topicName">
+          <%= link_to topic.name, topic_path(topic) %>
+        </div>
         Started by <%= link_to topic.author.username, profile_path(topic.author) %> <%= short_time topic.post_date %>
       </div>
       <div class="forum__topicStats">
