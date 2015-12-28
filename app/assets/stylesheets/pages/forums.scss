@@ -24,21 +24,29 @@
     text-decoration: none;
 }
 
-.category__forumDesc,
-.forum__topicDesc,
+.category__forumInfo,
+.forum__topicInfo,
 .category__forumStats,
 .forum__topicStats {
     display: table-cell;
     padding: $padding;
     vertical-align: middle;
     width: 50%;
+    height: 40px;
 }
 
 .category__forumName,
 .forum__topicName {
     font-weight: 500;
     display: block;
+}
+
+.forum__topicName {
     margin: 0 0 $margin;
+}
+
+.category__forumDesc {
+    margin: $margin 0 0;
 }
 
 .category__forumStats,
