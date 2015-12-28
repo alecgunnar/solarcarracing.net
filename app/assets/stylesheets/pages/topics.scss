@@ -1,18 +1,22 @@
-.post {
+.topic__description {
+    margin: 0 0 $margin;
+}
+
+.topic__post {
     margin-top: $margin;
     display: table;
     width: 100%;
 }
 
-.post__author,
-.post__content {
+.topic__postAuthor,
+.topic__postContent {
     box-sizing: border-box;
     border-radius: $border-radius;
     padding: $padding;
     display: table-cell;
 }
 
-.post__author {
+.topic__postAuthor {
     background-color: $light-gray;
     margin: 0 $margin $margin 0;
     width: 300px;
@@ -27,23 +31,23 @@
     }
 }
 
-.author__avatar {
+.topic__postAuthorPicture {
     width: 50px;
     height: 50px;
     margin-right: $margin;
     float: left;
 }
 
-.author__info a {
+.topic__postAuthorInfo a {
     display: inline-block;
     margin-bottom: $margin / 2;
 }
 
-.info__postCount {
+.topic__postAuthorPostCount {
     font-size: .8rem;
 }
 
-.post__content {
+.topic__postContent {
     background-color: $lighter-gray;
     width: 100%;
     vertical-align: top;
@@ -56,27 +60,31 @@
         }
     }
 
-    &:hover .post__content__options {
+    &:hover .topic__postOptions {
         opacity: 1;
         transition: .25s;
     }
 }
 
-.post__content__postDate {
+.topic__postDate {
     color: $dark-gray;
     margin-bottom: $margin;
 }
 
-.post__content__text {
+.topic__postText {
     height: 50px;
 }
 
-.post__content__options {
+.topic__postOptions {
     opacity: .1;
     transition: .25s;
 
     a {
         text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
     }
 
     ul {

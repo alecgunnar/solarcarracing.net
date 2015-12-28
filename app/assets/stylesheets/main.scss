@@ -1,0 +1,206 @@
+
+@import 'variables';
+@import 'partials';
+@import 'mixins';
+
+html {
+    height: 100%;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+body {
+    background-color: $background-color;
+    font-family: "Helvetica Neue", "Sans Serif";
+    letter-spacing: 1px;
+    color: $black;
+    padding: 0;
+    margin: 0;
+}
+
+/* Anchors */
+
+a {
+    color: $black;
+
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+/* Headers */
+
+h1, h2, h3 {
+    font-weight: 400;
+}
+
+h1, h2 {
+    margin: 0 0 $margin;
+}
+
+h3 {
+    background-color: $primary;
+    padding: $padding;
+    margin: 0;
+
+    &, a {
+        color: $white;
+    }
+}
+
+/* Components */
+
+.wrapper {
+    max-width: $wrapper-max-width;
+    min-width: $wrapper-min-width;
+    margin: 0 auto;
+}
+
+.clearBoth {
+    clear: both;
+}
+
+.globalHeader {
+    background-color: $primary;
+    line-height: $global-header-height;
+    font-weight: 400;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    -webkit-font-smoothing: antialiased;
+}
+
+.branding a {
+    background-image: image-url('logos/version_three.png');
+    background-size: $logo-width $logo-height;
+    background-repeat: no-repeat;
+    background-position: left center;
+    text-indent: -100%;
+    display: inline-block;
+    width: $branding-width;
+    height: $global-header-height;
+    float: left;
+}
+
+
+.userBar {
+    position: relative;
+    float: right;
+
+    a, & {
+        color: $white;
+    }
+
+    ul {
+        @extend .horizontalMenu;
+    }
+}
+
+.globalNavigation,
+.userBar__currentMember {
+    margin-top: $global-header-height / 4;
+    line-height: $global-header-height / 2;
+}
+
+.userBar__currentMember {
+    background-color: $primary-darker;
+    padding: 0 $padding;
+    border-radius: $border-radius;
+    cursor: pointer;
+    position: relative;
+
+    &:before {
+        background: transparent;
+        border-left: 2px solid $white;
+        border-bottom: 2px solid $white;
+        top: $padding + 3px;
+        right: $padding * 2;
+
+        @include carrot(7px, 7px, -45deg);
+    }
+
+    &.active:before {
+        top: $padding * 2 - 3px;
+
+        @include carrot(7px, 7px, 135deg);
+    }
+}
+
+.userBar__currentMember__avatar {
+    width: $global-header-height / 3;
+    height: $global-header-height / 3;
+    vertical-align: middle;
+    margin: 0 $margin * 4 0 $margin;
+}
+
+.userBar__currentMember__menu {
+    background-color: $primary-darker;
+    line-height: 1;
+    position: absolute;
+    top: $global-header-height - ($global-header-height / 8);
+    right: 0;
+    width: $userbar-menu-width;
+    border-radius: $border-radius;
+    display: none;
+    z-index: 100;
+
+    ul {
+        @extend .verticalMenu;
+
+        a {
+            padding: $padding;
+            display: block;
+        }
+    }
+
+    &:before {
+        background-color: $primary-darker;
+        top: -7px;
+        right: ($margin * 2) - 3px;
+
+        @include carrot(14px, 14px, 45deg);
+    }
+}
+
+.globalNavigation {
+    text-transform: uppercase;
+    float: left;
+
+    a {
+        color: $white;
+        text-decoration: none;
+        margin-left: $margin * 2;
+        display: inline-block;
+
+        &:hover,
+        &.active {
+            text-decoration: underline;
+        }
+    }
+
+    ul {
+        @extend .horizontalMenu;
+
+        li {
+            margin: 0;
+        }
+    }
+}
+
+main {
+    background-color: $white;
+    margin: $global-header-height 0 $margin;
+    padding: $padding;
+}
+
+.globalFooter {
+    text-align: center;
+
+    a, & {
+        color: $gray;
+    }
+}
+
+@import 'pages';

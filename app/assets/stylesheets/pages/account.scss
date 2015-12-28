@@ -1,0 +1,7 @@
+.account__navigation {
+    margin: 0 0 $margin;
+
+    ul {
+        @extend .horizontalTabs--anchored;
+    }
+}

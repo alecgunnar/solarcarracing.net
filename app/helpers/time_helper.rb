@@ -1,8 +1,11 @@
 module TimeHelper
   def short_time (time)
-    now = Time.new
+    now   = Time.new
+    today = now.to_date
 
-    if time.to_date === now.to_date # sometime today, but not in the future!
+    the_day = time.to_date
+
+    if the_day === today # sometime today, but not in the future!
       diff = (now - time).to_i
 
       if diff < 60 # within the last minute
@@ -12,8 +15,10 @@ module TimeHelper
       else # since midnight
         'today at ' + (time.strftime '%l:%M %P')
       end
-    elsif (time.to_date + 1) === now.to_date # sometime yesterday
+    elsif (the_day + 1) === today # sometime yesterday
       'yesterday at ' + (time.strftime '%l:%M %P')
+    elsif today - 7 <  the_day # sometime within the last week
+      time.strftime 'on %A at %l:%M %P'
     else # anytime before yesterday
       time.strftime 'on %B %e, %Y at %l:%M %P'
     end

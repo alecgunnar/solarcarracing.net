@@ -1,24 +1,25 @@
 <h1><%= @topic.name %></h1>
+<div class="topic__description">Started by <%= link_to @topic.author.username, profile_path(@topic.author) %> <%= short_time @topic.post_date %></div>
 
 <% for post in @topic.posts %>
   <a name='post_<%= post.id %>'></a>
-  <div class="post">
-    <div class="post__author">
-      <%= image_tag post.author.gravatar_url, class: 'author__avatar' %>
-      <div class="author__info">
+  <div class="topic__post">
+    <div class="topic__postAuthor">
+      <%= image_tag post.author.gravatar_url, class: 'topic__postAuthorPicture' %>
+      <div class="topic__postAuthorInfo">
         <%= link_to post.author.username, profile_path(post.author) %>
-        <div class="info__postCount">
+        <div class="topic__postAuthorPostCount">
           <%= number_with_delimiter post.author.num_posts %> <%= 'post'.pluralize post.author.num_posts %>
         </div>
       </div>
     </div>
-    <div class="post__content">
-      <div class="post__content__postDate">Posted <%= short_time post.post_date %></div>
-      <div class="post__content__text">
+    <div class="topic__postContent">
+      <div class="topic__postDate">Posted <%= short_time post.post_date %></div>
+      <div class="topic__postText">
         <%= raw post.content.bbcode_to_html %>
       </div>
       <% if user_signed_in? %>
-        <div class="post__content__options">
+        <div class="topic__postOptions">
           <ul>
             <% if current_user.is_moderator? or post.author == current_user %>
               <li><%= link_to 'Edit', forums_path %></li>

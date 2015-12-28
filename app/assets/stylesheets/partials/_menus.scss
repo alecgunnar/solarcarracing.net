@@ -1,6 +1,4 @@
 .horizontalMenu {
-    display: inline;
-
     li, & {
         margin: 0;
         padding: 0;
@@ -8,11 +6,27 @@
 
     li {
         list-style: none;
+    }
+}
+
+.horizontalMenu {
+    li {
         display: inline;
         margin: 0 0 0 $margin;
 
         &:first-of-type {
             margin-left: 0;
         }
+    }
+}
+
+.verticalMenu {
+    li, & {
+        margin: 0;
+        padding: 0;
+    }
+
+    li {
+        list-style: none;
     }
 }

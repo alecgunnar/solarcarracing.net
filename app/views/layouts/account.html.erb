@@ -1,14 +1,21 @@
+<% nav_links = [
+  {action: 'overview', label: 'Overview', path: account_path},
+  {action: 'email', label: 'Email Address', path: account_email_path},
+  {action: 'password', label: 'Password', path: account_password_path},
+  {action: 'profile', label: 'Profile Information', path: account_profile_path},
+  {action: 'picture', label: 'Profile Picture', path: account_picture_path}] %>
+
 <%= render 'layouts/parts/header' %>
 <h1>Manage Account</h1>
 <div class="account__navigation">
-  <h3>Choose what you'd like to change</h3>
   <ul>
-    <li><%= link_to 'Email Address or Password', root_path %></li>
-    <li><%= link_to 'Profile Information', root_path %></li>
-    <li><%= link_to 'Profile Picture', root_path %></li>
+    <% for link in nav_links %>
+      <li><%= link_to link[:label], link[:path], class: link[:action] == action_name ? 'active' : '' %></li>
+    <% end %>
   </ul>
 </div>
-<div class="account__form">
+<div class="account__panel">
   <%= yield %>
 </div>
+<div class="clearBoth"></div>
 <%= render 'layouts/parts/footer' %>

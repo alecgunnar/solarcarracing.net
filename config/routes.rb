@@ -5,6 +5,10 @@ Rails.application.routes.draw do
 
   # Account management
   get '/account', to: 'account#overview', as: 'account'
+  get '/account/email-address', to: 'account#email', as: 'account_email'
+  get '/account/password', to: 'account#password', as: 'account_password'
+  get '/account/profile-information', to: 'account#profile', as: 'account_profile'
+  get '/account/profile-picture', to: 'account#picture', as: 'account_picture'
 
   # Profiles
   get '/profile/:id', to: 'profile#show', as: 'profile', constraints: { id: SEO_NAME_PATTERN }

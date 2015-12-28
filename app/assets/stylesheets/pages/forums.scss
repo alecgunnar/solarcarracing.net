@@ -1,13 +1,9 @@
-.category__title {
-    background-color: $primary;
-    font-weight: 400;
-    color: $white;
-    padding: $padding;
-    margin: 0;
+.category--subforums {
+    margin: 0 0 $margin;
 }
 
 .category__forum,
-.topic {
+.forum__topic {
     padding: $padding;
 
     &:nth-of-type(odd) {
@@ -15,19 +11,29 @@
     }
 }
 
-.forum__name,
-.topic__name {
+.forum__topic--noTopics {
+    background-color: $lighter-gray;
+    text-align: center;
+    font-style: italic;
+}
+
+.category__title a {
+    text-decoration: none;
+}
+
+.category__forumName,
+.forum__topicName {
     font-weight: 400;
     display: inline-block;
     margin-bottom: $margin;
 }
 
-.forum__description,
-.topic__description {
+.category__forumDesc,
+.forum__topicDesc {
     font-size: .8rem;
 }
 
-.forum__description__stats,
-.topic__description__stats {
+.category__forumStats,
+.forum__topicStats {
     float: right;
 }

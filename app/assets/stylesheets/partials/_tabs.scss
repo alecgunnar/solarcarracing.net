@@ -1,0 +1,49 @@
+@import 'menus';
+
+.horizontalTabs {
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+    border-bottom: 2px solid $light-gray;
+
+    @extend .horizontalMenu;
+
+    li {
+        background-color: $lighter-gray;
+        text-align: center;
+        padding: $padding;
+        border-right: 2px solid $white;
+        display: table-cell;
+
+        &:last-of-type {
+            border: none;
+        }
+
+        &.active, &:hover {
+            background-color: $light-gray;
+        }
+    }
+}
+
+.horizontalTabs--anchored {
+    @extend .horizontalTabs;
+
+    li {
+        padding: 0;
+
+        &, &:hover {
+            background: transparent;
+        }
+
+        a {
+            background-color: $lighter-gray;
+            text-decoration: none;
+            display: block;
+            padding: $padding;
+
+            &.active, &:hover {
+                background-color: $light-gray;
+            }
+        }
+    }
+}
