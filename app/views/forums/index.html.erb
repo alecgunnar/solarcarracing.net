@@ -5,27 +5,26 @@
     <h3 class="category__title"><%= link_to category.name, forum_path(category) %></h3>
     <% for forum in category.forums %>
       <div class="category__forum">
-        <%= link_to forum.name, forum_path(forum), class: 'category__forumName' %>
         <div class="category__forumDesc">
-          <div class="category__forumStats">
-            <% if forum.num_topics > 0 %>
-              <%= number_with_delimiter forum.num_posts %> <%= 'post'.pluralize forum.num_posts %> in <%= number_with_delimiter forum.num_topics %> <%= 'topic'.pluralize forum.num_topics %><% if !forum.last_post_id.nil? %>, last post by <%= link_to forum.last_post.author.username, profile_path(forum.last_post.author) %> <%= short_time forum.last_post.post_date %><% end %>
-            <% else %>
-              No topics
-            <% end %>
-          </div>
+          <%= link_to forum.name, forum_path(forum), class: 'category__forumName' %>
           <%= forum.description %>
-          <div class="clearBoth"></div>
+          <% if forum.forums.length > 0 %>
+            <div class="category__forumSubs">
+              <ul>
+                <% for sub in forum.forums %>
+                  <li><%= link_to sub.name, forum_path(sub) %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
         </div>
-        <% if forum.forums.length > 0 %>
-          <div class="category__forumSubs">
-            <ul>
-              <% for sub in forum.forums %>
-                <li><%= link_to sub.name, forum_path(sub) %></li>
-              <% end %>
-            </ul>
-          </div>
-        <% end %>
+        <div class="category__forumStats">
+          <% if forum.num_topics > 0 %>
+            <%= number_with_delimiter forum.num_posts %> <%= 'post'.pluralize forum.num_posts %> in <%= number_with_delimiter forum.num_topics %> <%= 'topic'.pluralize forum.num_topics %><% if !forum.last_post_id.nil? %>, last post by <%= link_to forum.last_post.author.username, profile_path(forum.last_post.author) %> <%= short_time forum.last_post.post_date %><% end %>
+          <% else %>
+            No topics
+          <% end %>
+        </div>
       </div>
     <% end %>
   </div>

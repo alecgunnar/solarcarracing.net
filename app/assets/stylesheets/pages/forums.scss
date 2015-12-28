@@ -4,7 +4,8 @@
 
 .category__forum,
 .forum__topic {
-    padding: $padding;
+    display: table;
+    width: 100%;
 
     &:nth-of-type(odd) {
         background-color: $lighter-gray;
@@ -21,21 +22,26 @@
     text-decoration: none;
 }
 
-.category__forumName,
-.forum__topicName {
-    font-weight: 400;
-    display: inline-block;
-    margin-bottom: $margin;
+.category__forumDesc,
+.forum__topicDesc,
+.category__forumStats,
+.forum__topicStats {
+    display: table-cell;
+    padding: $padding;
+    vertical-align: middle;
+    width: 50%;
 }
 
-.category__forumDesc,
-.forum__topicDesc {
-    font-size: .8rem;
+.category__forumName,
+.forum__topicName {
+    font-weight: 500;
+    display: block;
+    margin: 0 0 $margin;
 }
 
 .category__forumStats,
 .forum__topicStats {
-    float: right;
+    text-align: right;
 }
 
 .category__forumSubs {
