@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151223191411) do
+ActiveRecord::Schema.define(version: 20151229172317) do
 
   create_table "forums", force: :cascade do |t|
     t.string  "name",         limit: 255,             null: false
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20151223191411) do
     t.text     "content",   limit: 65535
     t.boolean  "edited",    limit: 1,     default: false
     t.datetime "edit_date"
+    t.boolean  "is_first",  limit: 1,     default: false
   end
 
   add_index "posts", ["topic_id"], name: "fk_rails_70d0b6486a", using: :btree
@@ -43,7 +44,7 @@ ActiveRecord::Schema.define(version: 20151223191411) do
     t.datetime "post_date",                                null: false
     t.integer  "forum_id",     limit: 4,                   null: false
     t.integer  "user_id",      limit: 4,                   null: false
-    t.integer  "num_posts",    limit: 4,   default: 1
+    t.integer  "num_posts",    limit: 4,   default: 0
     t.integer  "last_post_id", limit: 4
     t.boolean  "pinned",       limit: 1,   default: false
     t.boolean  "closed",       limit: 1,   default: false

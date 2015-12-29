@@ -27,8 +27,9 @@ topic.forum  = forum
 topic.author = root
 topic.save
 
-post         = Post.new
-post.topic   = topic
-post.author  = root
-post.content = 'You have successfully installed SolarCarRacing.net, congrats!'
+post          = Post.new
+post.topic    = topic
+post.author   = root
+post.content  = 'You have successfully installed SolarCarRacing.net, congrats!'
+post.is_first = true
 post.save

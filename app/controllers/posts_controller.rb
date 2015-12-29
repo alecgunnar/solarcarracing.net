@@ -16,7 +16,7 @@ class PostsController < ApplicationController
     @post.assign_attributes({ topic: @topic, author: current_user })
 
     if @post.save
-      redirect_to @post
+      redirect_to @post, notice: 'Posted your reply.'
     else
       render 'reply'
     end
@@ -32,7 +32,7 @@ class PostsController < ApplicationController
     @post.assign_attributes post_params
 
     if @post.save
-      redirect_to @post
+      redirect_to @post, notice: 'Saved your changes.'
     else
       render 'reply'
     end

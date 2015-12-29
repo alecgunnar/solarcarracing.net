@@ -32,7 +32,7 @@
       </div>
       <div class="forum__topicStats">
         <% if not topic.last_post.nil? %>
-          Last post by <%= link_to topic.last_post.author.username, profile_path(topic.last_post.author) %> <%= short_time topic.last_post.post_date %>
+          <%= pluralize topic.num_posts, 'reply' %>, the last posted by <%= link_to topic.last_post.author.username, profile_path(topic.last_post.author) %> <%= short_time topic.last_post.post_date %>
         <% else %>
           No replies have been posted.
         <% end %>

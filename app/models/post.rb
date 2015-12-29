@@ -17,7 +17,15 @@ class Post < ActiveRecord::Base
       author.increment :num_posts
       author.save
 
-      topic.update last_post: self, num_posts: topic.num_posts + 1
-      topic.forum.update last_post: self, num_posts: topic.forum.num_posts + 1
+      topic_vals = { last_post: self }
+      forum_vals = { last_post: self }
+
+      if not is_first?
+        forum_vals[:num_posts] = topic.forum.num_posts + 1
+        
+        topic.update({ last_post: self, num_posts: topic.num_posts + 1 })
+      end
+
+      topic.forum.update forum_vals
     end
 end

@@ -26,17 +26,19 @@ $dark-gray: #999;
 $darker-gray: #666;
 
 // Theme colors
-$background-color: #3C3C3C;
+$background-color: #A0AEC1;
 
-$primary: #089DE3;
-$primary-darker: darken($primary, 5%);
+$primary: #627894;
+$primary-darker: #466289;
+$primary-lighter: #DBE8F9;
 
-$secondary: #FFD44D;
+$secondary: #FA6121;
 $secondary-lighter: lighten($secondary, 5%);
 
-$thirdary: #E26700;
+$tertiary: #FFB739;
+$tertiary-lighter: lighten($tertiary, 5%);
 
-$alert: #D00;
+$alert: #E4001B;
 $alert-darker: darken($alert, 5%);
 
 $notice: #FFFFE0;

@@ -6,7 +6,7 @@ class CreateTopics < ActiveRecord::Migration
       t.datetime :post_date, null: false
       t.integer :forum_id, null: false
       t.integer :user_id, null: false
-      t.integer :num_posts, default: 1
+      t.integer :num_posts, default: 0
       t.integer :last_post_id, null: true, default: nil
       t.boolean :pinned, default: false
       t.boolean :closed, default: false

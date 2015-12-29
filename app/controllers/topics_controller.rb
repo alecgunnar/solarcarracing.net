@@ -18,14 +18,12 @@ class TopicsController < ApplicationController
     @topic = Topic.new topic_params
     @post  = Post.new post_params
 
-    @topic.forum  = @forum
-    @topic.author = current_user
-    @post.topic   = @topic
-    @post.author  = current_user
+    @topic.assign_attributes({ forum: @forum, author: current_user })
+    @post.assign_attributes({ topic: @topic, author: current_user, is_first: true })
 
     if @topic.save
       if @post.save
-        redirect_to @topic
+        redirect_to @topic, notice: 'Posted your topic.'
         return
       end
 
@@ -51,7 +49,7 @@ class TopicsController < ApplicationController
       @topic.save
       @post.save
 
-      redirect_to @topic
+      redirect_to @topic, notice: 'Saved your changes.'
     else
       render 'edit'
     end

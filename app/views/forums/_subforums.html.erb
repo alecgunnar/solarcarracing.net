@@ -21,7 +21,7 @@
     </div>
     <div class="category__forumStats">
       <% if not forum.last_post_stack.nil? %>
-        <%= pluralize forum.num_posts, 'post' %> in <%= pluralize forum.num_topics_stack, 'topic' %>, last post by <%= link_to forum.last_post_stack.author.username, profile_path(forum.last_post_stack.author) %> <%= short_time forum.last_post_stack.post_date %>
+        <%= pluralize forum.num_topics_stack, 'topic' %> and <%= pluralize forum.num_posts, 'reply' %>, the last posted by <%= link_to forum.last_post_stack.author.username, profile_path(forum.last_post_stack.author) %> <%= short_time forum.last_post_stack.post_date %>
       <% else %>
         No posts have been made.
       <% end %>

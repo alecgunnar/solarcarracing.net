@@ -1,5 +1,5 @@
 .button {
-    background-color: $primary;
+    background-color: $secondary;
     color: $white;
     font-size: 1rem;
     padding: $padding $padding * 3;
@@ -7,6 +7,6 @@
     border-radius: $border-radius;
 
     &:hover {
-        background-color: $primary-darker;
+        background-color: $secondary-lighter;
     }
 }

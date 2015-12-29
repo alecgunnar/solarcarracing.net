@@ -21,7 +21,7 @@ body {
 /* Anchors */
 
 a {
-    color: $black;
+    color: $primary-darker;
 
     &:hover {
         text-decoration: none;
@@ -77,7 +77,7 @@ h3 {
 }
 
 .globalHeader {
-    background-color: $primary;
+    background-color: $primary-darker;
     line-height: $global-header-height;
     font-weight: 400;
     position: fixed;
@@ -121,7 +121,7 @@ h3 {
 }
 
 .userBar__currentMember {
-    background-color: $primary-darker;
+    background-color: $primary;
     padding: 0 $padding;
     border-radius: $border-radius;
     cursor: pointer;
@@ -152,7 +152,7 @@ h3 {
 }
 
 .userBar__currentMember__menu {
-    background-color: $primary-darker;
+    background-color: $primary;
     line-height: 1;
     position: absolute;
     top: $global-header-height - ($global-header-height / 8);
@@ -172,7 +172,7 @@ h3 {
     }
 
     &:before {
-        background-color: $primary-darker;
+        background-color: $primary;
         top: -7px;
         right: ($margin * 2) - 3px;
 
@@ -215,7 +215,7 @@ main {
     text-align: center;
 
     a, & {
-        color: $gray;
+        color: $white;
     }
 }
 
