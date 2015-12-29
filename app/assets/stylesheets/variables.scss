@@ -26,11 +26,11 @@ $dark-gray: #999;
 $darker-gray: #666;
 
 // Theme colors
-$background-color: #A0AEC1;
+$background-color: #606060;
 
-$primary: #627894;
-$primary-darker: #466289;
-$primary-lighter: #DBE8F9;
+$primary: #089DE3;
+$primary-darker: darken($primary, 5%);
+$primary-lighter: lighten($primary, 5%);
 
 $secondary: #FA6121;
 $secondary-lighter: lighten($secondary, 5%);

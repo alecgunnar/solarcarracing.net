@@ -4,27 +4,29 @@
     display: table;
     table-layout: fixed;
     width: 100%;
-    border-bottom: 2px solid $primary-darker;
+    border-bottom: 2px solid $secondary;
 
     @extend .horizontalMenu;
+}
 
-    li {
-        background-color: $primary;
-        text-align: center;
+.horizontalTabs li,
+.horizontalTabs--anchored a {
+    background-color: $tertiary;
+    text-align: center;
+    color: $black;
+    padding: $padding;
+    border-right: 2px solid $white;
+    display: table-cell;
+    border-top-left-radius: $border-radius;
+    border-top-right-radius: $border-radius;
+
+    &:last-of-type {
+        border: none;
+    }
+
+    &.active, &:hover {
+        background-color: $secondary;
         color: $white;
-        padding: $padding;
-        border-right: 2px solid $white;
-        display: table-cell;
-        border-top-left-radius: $border-radius;
-        border-top-right-radius: $border-radius;
-
-        &:last-of-type {
-            border: none;
-        }
-
-        &.active, &:hover {
-            background-color: $primary-darker;
-        }
     }
 }
 
@@ -38,17 +40,8 @@
         }
 
         a {
-            background-color: $primary;
             text-decoration: none;
-            color: $white;
             display: block;
-            padding: $padding;
-            border-top-left-radius: $border-radius;
-            border-top-right-radius: $border-radius;
-
-            &.active, &:hover {
-                background-color: $primary-darker;
-            }
         }
     }
 }
