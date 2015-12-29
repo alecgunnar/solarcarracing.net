@@ -31,19 +31,21 @@ class Forum < ActiveRecord::Base
       stack_posts = Forum.where('parent_id = ?', id).sum(:num_posts)
     end
 
-    num_topics + (stack_posts || 0)
+    num_posts + (stack_posts || 0)
   end
 
   def last_post_stack
-    if forums.length > 0 and @stack_last_post.nil?
-      @stack_last_post = Forum.where('parent_id = ?', id).order('last_post_id desc').limit(1)[0]
-    end
+    # if forums.length > 0 and @stack_last_post.nil?
+    #   @stack_last_post = Forum.where('parent_id = ?', id).order('last_post_id desc').first
+    # end
 
-    if !@stack_last_post.nil? and (last_post.nil? or @stack_last_post.last_post.post_date > last_post.post_date)
-      @stack_last_post.last_post
-    else
-      last_post
-    end
+    # if !@stack_last_post.nil? and (last_post.nil? or @stack_last_post.last_post.post_date > last_post.post_date)
+    #   @stack_last_post.last_post
+    # else
+    #   last_post
+    # end
+
+    last_post
   end
 
   # This method will update the last post

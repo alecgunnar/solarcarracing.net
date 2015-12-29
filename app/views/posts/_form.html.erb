@@ -1,0 +1,29 @@
+<div class="formWrap">
+  <% all_errors = @post.errors.full_messages %>
+
+  <% if all_errors.length > 0 %>
+    <ul>
+      <% for error_msg in all_errors %>
+        <li><%= error_msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= form_for :post, url: action do |post_form| %>
+    <div class="formWrap__label">
+      <%= post_form.label :content %>
+    </div>
+    <div class="formWrap__field">
+      <%= post_form.text_area :content, class: 'wysiwyg' %>
+    </div>
+
+    <div class="formWrap__actions">
+      <% case action_name %>
+        <% when 'reply', 'create' %>
+          <%= post_form.submit "Post Reply" %>
+        <% when 'edit', 'update' %>
+          <%= post_form.submit "Save Changes" %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

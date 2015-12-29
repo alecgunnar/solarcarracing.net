@@ -11,7 +11,7 @@ module TimeHelper
       if diff < 60 # within the last minute
         'just seconds ago'
       elsif diff < 3600 # within the last hour
-        pluralize(diff / 60, 'minutes') + ' ago'
+        pluralize(diff / 60, 'minute') + ' ago'
       else # since midnight
         'today at ' + (time.strftime '%l:%M %P')
       end

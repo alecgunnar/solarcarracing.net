@@ -13,11 +13,23 @@ Rails.application.routes.draw do
   # Profiles
   get '/profile/:id', to: 'profile#show', as: 'profile', constraints: { id: SEO_NAME_PATTERN }
 
-  # The forums
+  # Forums
   get '/forums', to: 'forums#index', as: 'forums'
   get '/forum/:id', to: 'forums#show', as: 'forum', constraints: { id: SEO_NAME_PATTERN }
 
-  get 'topic/:id', to: 'topics#show', as: 'topic', constraints: { id: SEO_NAME_PATTERN }
+  # Topics
+  get '/topic/:id', to: 'topics#show', as: 'topic', constraints: { id: SEO_NAME_PATTERN }
+  get '/topic/start/:forum_id', to: 'topics#start', as: 'start_topic'
+  post '/topic/start/:forum_id', to: 'topics#create', as: 'create_topic'
+  get '/topic/edit/:id', to: 'topics#edit', as: 'edit_topic'
+  post '/topic/edit/:id', to: 'topics#update', as: 'update_topic'
+
+  # Posts
+  get '/post/:id', to: 'posts#show', as: 'post'
+  get '/post/reply/:topic_id', to: 'posts#reply', as: 'post_reply'
+  post '/post/reply/:topic_id', to: 'posts#create', as: 'post_create'
+  get '/post/edit/:id', to: 'posts#edit', as: 'post_edit'
+  post '/post/edit/:id', to: 'posts#update', as: 'post_update'
 
   devise_scope :user do
     # Registrations

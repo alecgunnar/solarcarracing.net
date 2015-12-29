@@ -5,9 +5,8 @@ class Post < ActiveRecord::Base
 
   validates_presence_of :topic, :author, :content
 
-  before_save :set_post_date, on: create
-  after_save :update_stats_for_create, on: create
-  before_destroy :update_stats_for_delete
+  before_save :set_post_date, on: :create
+  after_create :update_stats_for_create
 
   private
     def set_post_date
@@ -15,18 +14,10 @@ class Post < ActiveRecord::Base
     end
 
     def update_stats_for_create
-      topic.new_post self
-      topic.save!
-
       author.increment :num_posts
-      author.save!
-    end
+      author.save
 
-    def update_stats_for_delete
-      topic.del_post self
-      topic.save!
-
-      author.decrement :num_posts
-      author.save!
+      topic.update last_post: self, num_posts: topic.num_posts + 1
+      topic.forum.update last_post: self, num_posts: topic.forum.num_posts + 1
     end
 end

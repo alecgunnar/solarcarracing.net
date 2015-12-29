@@ -1,0 +1,38 @@
+<div class="formWrap">
+  <% all_errors = @topic.errors.full_messages + @post.errors.full_messages %>
+
+  <% if all_errors.length > 0 %>
+    <ul>
+      <% for error_msg in all_errors %>
+        <li><%= error_msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  
+  <%= form_for :topic, url: action do |topic_form| %>
+    <div class="formWrap__label">
+      <%= topic_form.label :name %>
+    </div>
+    <div class="formWrap__field">
+      <%= topic_form.text_field :name, autofocus: true, disabled: (not @topic.post_date.nil? and @topic.post_date > (Time.new + 3600)) %>
+    </div>
+
+    <%= topic_form.fields_for @post do |post_form| %>
+      <div class="formWrap__label">
+        <%= post_form.label :content %>
+      </div>
+      <div class="formWrap__field">
+        <%= post_form.text_area :content, class: 'wysiwyg' %>
+      </div>
+    <% end %>
+
+    <div class="formWrap__actions">
+      <% case action_name %>
+        <% when 'start', 'create' %>
+          <%= topic_form.submit "Create Topic" %>
+        <% when 'edit', 'update' %>
+          <%= topic_form.submit "Save Changes" %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

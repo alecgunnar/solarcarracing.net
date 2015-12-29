@@ -1,49 +1,28 @@
 <% title @forum.name %>
 
 <% if @forum.forums.length > 0 %>
-<div class="category category--subforums">
-  <h3><%= 'Subforum'.pluralize @forum.forums.length %></h3>
-  <% for forum in @forum.forums %>
-    <div class="category__forum">
-      <div class="category__forumInfo">
-        <div class="category__forumName">
-          <%= link_to forum.name, forum_path(forum) %>
-        </div>
-        <% if not forum.description.nil? %>
-          <div class="category__forumDesc">
-            <%= forum.description %>
-          </div>
-        <% end %>
-        <% if forum.forums.length > 0 %>
-          <div class="category__forumSubs">
-            <ul>
-              <% for sub in forum.forums %>
-                <li><%= link_to sub.name, forum_path(sub) %></li>
-              <% end %>
-            </ul>
-          </div>
-        <% end %>
-      </div>
-      <div class="category__forumStats">
-        <% if forum.num_posts_stack > 0 %>
-          <%= pluralize forum.num_posts_stack, 'post' %> in <%= pluralize forum.num_topics_stack, 'topic' %>, last post by <%= link_to forum.last_post_stack.author.username, profile_path(forum.last_post_stack.author) %> <%= short_time forum.last_post_stack.post_date %>
-        <% else %>
-          No posts here
-        <% end %>
-      </div>
-    </div>
-  <% end %>
-</div>
+  <div class="category category--subforums">
+    <h3><%= 'Subforum'.pluralize @forum.forums.length %></h3>
+    <%= render_subforums @forum.forums %>
+  </div>
+<% end %>
+
+<% if user_signed_in? %>
+  <div class="forum__buttonRow">
+    <ul>
+      <li><%= link_to 'Create new topic', create_topic_path(@forum.id) %></li>
+    </ul>
+  </div>
 <% end %>
 
 <% if !@forum.category.nil? %>
   <h3>Topics</h3>
 
-  <% if @forum.topics.length == 0 %>
+  <% if @topics.length == 0 %>
     <div class="forum__topic forum__topic--noTopics">This forum does not have any topics.</div>
   <% end %>
 
-  <% for topic in @forum.topics %>
+  <% for topic in @topics %>
     <div class="forum__topic">
       <div class="forum__topicInfo">
         <div class="forum__topicName">
@@ -52,7 +31,11 @@
         Started by <%= link_to topic.author.username, profile_path(topic.author) %> <%= short_time topic.post_date %>
       </div>
       <div class="forum__topicStats">
-        Last post by <%= link_to topic.last_post.author.username, profile_path(topic.last_post.author) %> <%= short_time topic.last_post.post_date %>
+        <% if not topic.last_post.nil? %>
+          Last post by <%= link_to topic.last_post.author.username, profile_path(topic.last_post.author) %> <%= short_time topic.last_post.post_date %>
+        <% else %>
+          No replies have been posted.
+        <% end %>
       </div>
     </div>
   <% end %>

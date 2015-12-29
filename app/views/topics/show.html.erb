@@ -1,35 +1,53 @@
 <% title @topic.name %>
 
-<div class="topic__description">Started by <%= link_to @topic.author.username, profile_path(@topic.author) %> <%= short_time @topic.post_date %></div>
+<% if user_signed_in? %>
+  <div class="topic__buttonRow">
+    <ul>
+      <li><%= link_to 'Post a reply', post_reply_path(@topic) %></li>
+    </ul>
+  </div>
+<% end %>
 
-<% for post in @topic.posts %>
+<% @topic.replies.each_with_index do |post, index| %>
   <a name='post_<%= post.id %>'></a>
-  <div class="topic__post">
-    <div class="topic__postAuthor">
-      <%= image_tag post.author.gravatar_url, class: 'topic__postAuthorPicture' %>
-      <div class="topic__postAuthorInfo">
+
+  <div class="topic__reply">
+    <div class="topic__replyAuthor">
+      <%= image_tag post.author.gravatar_url, class: 'topic__replyAuthorPicture' %>
+      <div class="topic__replyAuthorInfo">
         <%= link_to post.author.username, profile_path(post.author) %>
-        <div class="topic__postAuthorPostCount">
+        <div class="topic__replyAuthorReplyCount">
           <%= number_with_delimiter post.author.num_posts %> <%= 'post'.pluralize post.author.num_posts %>
         </div>
       </div>
     </div>
-    <div class="topic__postContent">
-      <div class="topic__postDate">Posted <%= short_time post.post_date %></div>
-      <div class="topic__postText">
-        <%= raw post.content.bbcode_to_html %>
+
+    <div class="topic__replyContent">
+      <div class="topic__replyPostDate">
+        <% if index == 0 %>Started<% else %>Posted<% end %> <%= short_time post.post_date %>
       </div>
+
+      <div class="topic__replyText">
+        <%= simple_format post.content.bbcode_to_html %>
+      </div>
+
       <% if user_signed_in? %>
-        <div class="topic__postOptions">
+        <div class="topic__replyOptions">
           <ul>
             <% if current_user.is_moderator? or post.author == current_user %>
-              <li><%= link_to 'Edit', forums_path %></li>
+              <% if index == 0 %>
+                <% edit_path = edit_topic_path(@topic) %>
+              <% end %>
+
+              <li><%= link_to('Edit', edit_path || post_edit_path(post)) %></li>
             <% end %>
-            <li><%= link_to 'Reply', forums_path %></li>
+
+            <% if index > 0 %>
+              <li><%= link_to('Reply', forums_path) %></li>
+            <% end %>
           </ul>
         </div>
       <% end %>
     </div>
-    <div class="clearBoth"></div>
   </div>
 <% end %>

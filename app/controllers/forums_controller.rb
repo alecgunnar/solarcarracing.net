@@ -4,6 +4,7 @@ class ForumsController < ApplicationController
   end
 
   def show
-    @forum = Forum.find params[:id]
+    @forum  = Forum.find params[:id]
+    @topics = Topic.joins(:replies).where('topics.forum_id = ?', @forum.id).order('posts.post_date DESC').uniq
   end
 end

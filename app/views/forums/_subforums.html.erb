@@ -1,0 +1,30 @@
+<% for forum in forums %>
+  <div class="category__forum">
+    <div class="category__forumInfo">
+      <div class="category__forumName">
+        <%= link_to forum.name, forum_path(forum) %>
+      </div>
+      <% if not forum.description.nil? %>
+        <div class="category__forumDesc">
+          <%= forum.description %>
+        </div>
+      <% end %>
+      <% if forum.forums.length > 0 %>
+        <div class="category__forumSubs">
+          <ul>
+            <% for sub in forum.forums %>
+              <li><%= link_to sub.name, forum_path(sub) %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    </div>
+    <div class="category__forumStats">
+      <% if not forum.last_post_stack.nil? %>
+        <%= pluralize forum.num_posts, 'post' %> in <%= pluralize forum.num_topics_stack, 'topic' %>, last post by <%= link_to forum.last_post_stack.author.username, profile_path(forum.last_post_stack.author) %> <%= short_time forum.last_post_stack.post_date %>
+      <% else %>
+        No posts have been made.
+      <% end %>
+    </div>
+  </div>
+<% end %>

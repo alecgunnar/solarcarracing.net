@@ -2,12 +2,14 @@ class Topic < ActiveRecord::Base
   belongs_to :forum
   belongs_to :author, class_name: 'User', foreign_key: 'user_id'
   belongs_to :last_post, class_name: 'Post', foreign_key: 'last_post_id'
-  has_many :posts
+  has_many :replies, class_name: 'Post'
 
-  validates_presence_of :name, :seo_name, :forum, :author
+  validates_presence_of :name, :forum, :author
 
-  before_save :set_post_date, on: create
-  after_create :update_parent_forum_stats, on: :create
+  before_save :set_post_date, on: :create
+  after_create :update_forum_stats_for_create
+
+  after_destroy :update_forum_stats_for_destroy
 
   def to_param
     "#{id}-#{seo_name}"
@@ -16,31 +18,6 @@ class Topic < ActiveRecord::Base
   def name= (name)
     write_attribute :name, name
     set_seo_name
-  end
-
-  def last_post= (post)
-    write_attribute :last_post_id, post.id
-    forum.last_post = post
-  end
-
-  def new_post (post)
-    self.last_post = post
-    increment :num_posts
-
-    forum.increment :num_posts
-    forum.save!
-  end
-
-  def del_post (post)
-    if post == last_post
-      forum.update_last_post if forum.last_post == last_post
-      self.last_post = posts[-2]
-    end
-
-    decrement :num_posts
-
-    forum.decrement :num_posts
-    forum.save!
   end
 
   private
@@ -52,8 +29,13 @@ class Topic < ActiveRecord::Base
       self.seo_name = name.parameterize
     end
 
-    def update_parent_forum_stats
+    def update_forum_stats_for_create
       forum.increment :num_topics
-      forum.save!
+      forum.save
+    end
+
+    def update_forum_stats_for_destroy
+      forum.decrement :num_topics
+      forum.save
     end
 end
